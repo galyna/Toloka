@@ -1,0 +1,21 @@
+﻿@model Core.Data.Entities.Store
+
+<script src="/Content/js/buy.js"></script>
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model.Products)
+        {
+
+            @Html.Raw(System.Web.HttpUtility.HtmlDecode(item.HtmlBannerOrderedNot));
+          
+          @Html.Hidden(item.HtmlBannerOrderedNot);
+        }
+    </div>
+</div>
+<script type="text/javascript">
+//<![CDATA[
+    $(document).ready(function () {
+        Buyer.init();
+    });
+//]]>
+</script>

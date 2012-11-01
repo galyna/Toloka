@@ -1,0 +1,45 @@
+﻿@*@model EleksCookies.Widgets.Models.CombinedHTMLItemPart
+@using Orchard.Core.Common.ViewModels;
+@using Orchard.Utility.Extensions;
+@using SquishIt.Framework;
+@{
+  Script.Require("CombinedHTMLTinyMce"); 
+}
+
+<fieldset>
+
+  @Html.LabelFor(m => m.Html)
+
+  @Html.TextAreaFor(m => m.Html,
+    new Dictionary<string, object> {
+      {"class", "html tinymce"}
+   })
+</fieldset>
+
+
+@using (System.Web.Script.Foot())
+{
+<script type="text/javascript">
+//<![CDATA[
+   (function ajaxLoad() {
+       $.ajax({
+           type: 'GET',
+           url: '@Html.AntiForgeryTokenGetUrl(@Url.Action("GetTinyMceInitSettings","CombinedHTML",new { area = "EleksCookies.Widgets" }))',
+           dataType: "json",
+           success: function (data) {
+               var options = {};
+               options.templates = data.templates
+               options.scripts = data.scripts;
+               options.cssAction = '@Url.Action("GetTemplateCss","CombinedHTML",new { area = "EleksCookies.Widgets" })';
+               options.Host = '@Request.Url.Scheme' + "://" + '@Request.Url.DnsSafeHost' + ":" + '@Request.Url.Port' + '@Request.ApplicationPath';
+               options.ContentRootFolder = data.rootImagesFolderPath;
+               initTinyMCE(options);
+           },
+           error: function (error) {
+               alert(error);
+           }
+       });
+   } ());
+//]]>
+</script>
+}*@

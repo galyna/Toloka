@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Edit header</title>
+       <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
+    <script type="text/javascript" src="../../tiny_mce_popup.js"></script>
+    <script type="text/javascript" src="../../utils/mctabs.js"></script>
+    <script type="text/javascript" src="../../utils/form_utils.js"></script>
+    <script type="text/javascript" src="../../utils/validate.js"></script>
+        <script type="text/javascript" src="js/template_list.js"></script>
+</head>
+<body id="link" style="display: none">
+    <form onsubmit="SpanTemplateList.insert();return false;" action="#">
+    <div class="tabs">
+        <ul>
+            <li id="general_tab" class="current"><span><a href="javascript:mcTabs.displayTab('general_tab','general_panel');"
+                onmousedown="return false;">Edit list</a></span></li>
+        </ul>
+    </div>
+    <div class="panel_wrapper">
+        <div id="general_panel" class="panel current">
+            <div>
+                Enter new list item name<br />
+                <input id="new_list_item_name" type="text" style="width: 300px;" title="Enter new list item name" />
+                <br />
+                Select item to remove<br />
+                <select name="select_list" style="width: 300px;" id="select_list">
+                    <option value="0">Integration into the smart networks</option>
+                    <option value="1">Real-time communication with the system measurement units, alarm systems
+                        and personnel</option>
+                    <option value="2">Self-studied systems that automatically help preventing system blackouts
+                        and outages</option>
+                </select>
+                <br />
+            </div>
+            <br />
+            <br />
+            <input type="button" id="create" value="Create" onclick="SpanTemplateList.create();" />
+            <input type="button" id="remove" value="Remove" onclick="SpanTemplateList.remove();"  />
+        </div>
+    </div>
+    <div class="mceActionPanel">
+        <input type="submit" id="insert" name="insert" value="Insert" />
+        <input type="button" id="cancel" name="cancel" value="Cancel" onclick="tinyMCEPopup.close();" />
+    </div>
+    </form>
+</body>
+</html>

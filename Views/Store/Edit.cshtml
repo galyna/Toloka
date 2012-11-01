@@ -1,0 +1,53 @@
+﻿@model  TolokaStudio.Models.StoreEditModel
+@using ViewRes.Home
+@using ViewRes.Store
+@{
+    ViewBag.Title = @Store.Edit_Store;
+}
+<script src="@Url.Content("~/Scripts/jquery/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/sumkaScripts/create_store.js")" type="text/javascript"></script>
+<div class="container">
+    <div class="row">
+        @using (Html.BeginForm())
+        {
+   
+            @Html.ValidationSummary(true)
+            <fieldset>
+                @Html.HiddenFor(model => model.Id)
+                <div class="row store">
+                    @Html.Raw(System.Web.HttpUtility.HtmlDecode(Model.HtmlBanner))
+                    <div class="span6">
+                        @Html.LabelFor(model => model.Name)
+                        @Html.EditorFor(model => model.Name)
+                        @Html.ValidationMessageFor(model => model.Name, null, new { @class = "required" })
+                        @Html.Label("Короткий опис")
+                        @Html.EditorFor(model => model.Description, new { @class = "storecreatefield" })
+                        @Html.ValidationMessageFor(model => model.Description, null, new { @class = "required" })
+                        @Html.HiddenFor(model => model.ImagePath)
+                    </div>
+                    <div class="span10">
+                        <iframe id="templatesrc" name="templatesrc" src="/Store/ImageUpload" frameborder="0"
+                            style="float: left; width: 400px; height: 320px"></iframe>
+                    </div>
+                </div>
+                <div class="row">
+                    <input type="submit" value="@Home.Save" />
+                </div>
+            </fieldset>      
+        }
+        <div>
+            @Html.ActionLink(Home.BackToList, "Index")
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+//<![CDATA[
+    $(document).ready(function () {
+        $('#templatesrc').load(function () {
+            StoreCreator.init();
+        });
+    });
+    
+//]]>
+</script>

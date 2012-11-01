@@ -1,0 +1,16 @@
+﻿@model List<Core.Data.Entities.Order>
+@using ViewRes.Home
+<div class="container">
+    @foreach (var item in Model)
+    {   
+        <div class="row">
+        @Html.Raw(System.Web.HttpUtility.HtmlDecode(item.Employee.HtmlBanner))
+            @Html.Raw(System.Web.HttpUtility.HtmlDecode(item.Product.HtmlBanner))
+            <div class="span2 offset1">
+  
+                @Html.ActionLink(Home.Delete, "Delete", new { id = item.Id })
+            </div>
+        </div>                 
+        
+    }
+</div>

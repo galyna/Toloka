@@ -1,0 +1,44 @@
+body {
+  font-size: 14px;
+  line-height: 22px;
+  color: #333333;
+  font-family: Helvetica,Aria,sans-serif,'Liberation Sans' ,FreeSans,sans-serif;
+}
+
+
+/* Headings
+-------------------------------------------------------------- */
+h1 {
+    font-family: EuropeRegular;
+    font-size: 42px;
+    line-height:46px;
+    font-weight: normal;
+}
+h2 {
+    font-family: EuropeRegular;
+    font-size: 26px;
+    line-height: 32px;
+    font-weight: normal;
+}
+h3 {
+    font-family: Aria,sans-serif;
+    font-size: 16px;
+    line-height: 20px;
+}
+h4 {
+    font-family: Aria,sans-serif;
+    font-size: 14px;
+    line-height: 15px;
+}
+h5 {
+    font-family: Aria,sans-serif;
+    font-size: 14px;
+    line-height: 32px;
+}
+h6 {
+    font-family: Aria,sans-serif;
+    font-size: 12px;
+    line-height: 32px;
+}
+
+

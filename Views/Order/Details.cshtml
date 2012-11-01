@@ -1,0 +1,10 @@
+﻿@model Core.Data.Entities.Order
+
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model.Products)
+        {                 
+            @Html.Raw(System.Web.HttpUtility.HtmlDecode(item.HtmlBanner)) 
+        }
+    </div>
+</div>

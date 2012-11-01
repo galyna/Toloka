@@ -1,0 +1,18 @@
+﻿@model TolokaStudio.Models.UsersModel
+@foreach (var item in Model.Users)
+{
+    <div class="row">
+        <div class="span10">
+            @Html.Raw(item.UserName)
+            @if (item.Role.IsAdmin)
+            { @Html.Raw("в ролі Aдмін") }
+            @if (item.Role.IsAuthor)
+            { @Html.Raw("в ролі Автор") }
+        </div>
+        <div class="span4 offset1">
+            @Html.ActionLink("Автор", "Author", new { id = item.Id })
+            @Html.ActionLink("Aдмін", "Admin", new { id = item.Id })
+        </div>
+    </div>
+                   
+}

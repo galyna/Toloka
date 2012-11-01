@@ -1,0 +1,33 @@
+﻿@model Core.Data.Entities.Store
+@using ViewRes.Home
+@using ViewRes.Store
+@{
+    ViewBag.Title = @Home.Delete;
+}
+<fieldset>
+    <div class="container">
+        @using (Html.BeginForm())
+        {    
+            <fieldset>
+                <div class="row">
+                    <h2>@Home.Delete</h2>
+                    <h3>@Home.Delete_Comfirm</h3>
+                    <legend>@Home.Store</legend>
+                    @Html.HiddenFor(model => model.Id)
+                    @if(Model.HtmlBanner!=null){
+                        @Html.Raw(System.Web.HttpUtility.HtmlDecode(Model.HtmlBanner));
+                    }
+                </div>
+                <br />
+                <div class="row">
+                    <input type="submit" value="@Home.Delete" />
+                </div>
+            </fieldset>     
+        }
+         <br />
+        <div class="row">
+            @Html.ActionLink(Home.BackToList, "Index")
+        </div>
+    </div>
+    </div>
+</fieldset>

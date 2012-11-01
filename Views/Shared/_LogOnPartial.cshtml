@@ -1,0 +1,24 @@
+﻿
+@if(Request.IsAuthenticated) {
+     
+     <span>Привіт!   @User.Identity.Name</span> 
+   
+    if (User.IsInRole("Author"))
+    {
+         <div class='span2 offset3'> @Html.ActionLink("Кабінет", "Cabinet", "Employee") </div>  
+    }
+    
+    if (User.IsInRole("Admin"))
+    {
+        <div class='span2 offset3'>    @Html.ActionLink("Кабінет", "Index", "Store") </div>  
+    }
+    <div class='span2 offset3'>  @Html.ActionLink("Вийти", "LogOff", "Account") </div>
+
+}
+else
+{
+    <div class='span2 offset3'> @Html.Partial("_RegisterPartial") </div>
+    
+ 
+}
+

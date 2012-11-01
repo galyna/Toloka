@@ -1,0 +1,123 @@
+﻿/* Common */
+
+.hidden {
+  display: none;
+}
+
+.clear {
+  clear: both;
+  width: 0;
+  height: 0;
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+.edit-field {
+  margin: 10px 10px 10px 0px;
+}
+
+/* /Common */
+
+/* Portlet Container */
+
+.portlet-content .portlet-container {
+  width: 610px;
+  float: left;
+  position: relative;
+  margin: 10px;
+}
+
+.portlet-content .portlet-container a {
+  cursor: pointer;
+}
+
+.portlet-content label {
+  display: inline;
+}
+
+.portlet-content .portlet-container .portlet {
+  background-color: #eee;
+  border: 1px solid #AAA;
+}
+
+.portlet-content .portlet-container.absolute .portlet {
+  position: absolute;
+}
+
+.portlet-content .portlet-container.block .portlet {
+  float: left;
+}
+
+.portlet-content .portlet-container .portlet h1 {
+  font-size: 11px;
+  padding-left: 5px;
+}
+
+.portlet-content .portlet-container .portlet h2 {
+  font-size: 10px;
+  padding-left: 5px;
+}
+
+.portlet-content .add-item {
+  margin-bottom: 5px;
+}
+
+.portlet-content .add-item .field {
+  margin-right: 10px;
+}
+
+.portlet-content .portlet-container .portlet .delete-item {
+  float: right;
+  cursor: pointer;
+}
+
+/* /Portlet Container */
+
+/* Color Picker */
+
+.color-picker input {
+  width: 50px;
+}
+
+/* /Color Picker */
+
+/* Editable ComboBox */
+
+.editable-combobox select {
+  width: 200px;
+}
+
+/* /Editable ComboBox */
+
+/* Page Properties */
+
+.page-properties select {
+  width: 170px;
+}
+
+.page-properties .display-type-chk,
+.page-properties .display-type-editors {
+  margin: 10px 0;
+}
+
+/* /Page Properties */
+
+/* input search */
+
+input.search {
+  width: 200px;
+  margin: 10px 0;
+  color: #999;
+}
+
+input.search.active {
+  color: #000;
+}
+
+/* /input search */

@@ -1,0 +1,28 @@
+﻿@model SumkaWeb.Models.OrderCreateModel
+@using ViewRes.Home
+<div class="container">
+    <div class="row  ">
+        @using (Html.BeginForm())
+        {
+            
+            <fieldset>
+                @Html.HiddenFor(m => m.EmployeeId)
+                @Html.HiddenFor(m => m.ProductId)
+                @Html.Raw(System.Web.HttpUtility.HtmlDecode(Model.Product.HtmlBanner))
+                @Html.Raw(System.Web.HttpUtility.HtmlDecode(Model.Employee.HtmlBanner))
+                <div class="span8">
+                 <div class="copyright">
+                       @Home.Order_Info
+                    </div>
+                    @Html.EditorFor(m => m.ContactEmail)
+                    <input type="submit" value="Замовити" />
+
+                </div>
+            </fieldset>
+        }
+        <br />
+        <div>
+            @Html.ActionLink(Home.BackToList, "Index")
+        </div>
+    </div>
+</div>

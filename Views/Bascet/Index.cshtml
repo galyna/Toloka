@@ -1,0 +1,47 @@
+﻿@model TolokaStudio.Models.BascetModel
+@using ViewRes.Home
+<script src="/Content/js/Buy.js"></script>
+<div class="container">
+    <div class="container">
+        @if (Model != null && Model.Orders != null && Model.Orders.Count > 0)
+        {
+            <div class="row">
+                <h5>
+                    Замовте або видаліть товар з кошика скориставшись галочкою чи хрестиком.<br />
+                    Перед замовленням перевірте чи вірно адреса вашої пошти для зворотнього звязку.
+                </h5>
+            </div>    
+            foreach (var item in Model.Orders)
+            {   
+            <div class="row">
+                <div class="span9">
+                    @Html.Raw(System.Web.HttpUtility.HtmlDecode(item.Product.HtmlBannerOrdered))
+                </div>
+                <div class="span14 orderBascet">
+                    @Html.Hidden("orderId"+item.Id , item.Id)
+                 
+                    @Html.TextArea(item.Id + "email", item.Email, new { @style = "resize: none;", @cols = 40, @rows = 2, @class = item.Id + "email" })
+                    @Html.TextArea(item.Id + "comments", item.Comments, new { @style = "resize: none;", @cols = 40, @rows = 17, @class = item.Id + "comments" })
+                </div>
+          
+            </div> 
+            }
+
+        }
+        else
+        {
+            <div class="row">
+                <h5>
+                    Додайте товари в кошик через пункт меню Товари
+                </h5>
+            </div>   
+        }
+    </div>
+    <script src="/Content/js/buy.js"></script>
+    <script type="text/javascript">
+//<![CDATA[
+        $(document).ready(function () {
+            Buyer.init();
+        });
+//]]>
+    </script>

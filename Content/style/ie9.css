@@ -1,0 +1,12 @@
+/************
+    Graph bg
+************/
+.promo_graph_bg{
+    background: url("../img/graph_bg_IE.png") left top no-repeat;
+}
+.garp_blue_warp{
+    display: none;
+}
+.garp_green_warp{
+    display: none;
+}

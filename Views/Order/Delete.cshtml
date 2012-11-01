@@ -1,0 +1,33 @@
+﻿@model Core.Data.Entities.Order
+@using ViewRes.Home
+@{
+    ViewBag.Title = @Home.Delete;
+}
+<fieldset>
+    <div class="container">
+        @using (Html.BeginForm())
+        {    
+            <fieldset>
+                <div class="row">
+                    @if (Model.Employee.HtmlBanner != null)
+                    {
+                        Html.Raw(System.Web.HttpUtility.HtmlDecode(Model.Employee.HtmlBanner));
+                    }
+                    @if (Model.Product.HtmlBanner != null)
+                    {
+                        Html.Raw(System.Web.HttpUtility.HtmlDecode(Model.Product.HtmlBanner));
+                    }
+                </div>
+                <br />
+                <div class="row">
+                    <input type="submit" value="@Home.Delete" />
+                </div>
+            </fieldset>     
+        }
+        <br />
+        <div class="row">
+            @Html.ActionLink(Home.BackToList, "Index")
+        </div>
+    </div>
+    </div>
+</fieldset>

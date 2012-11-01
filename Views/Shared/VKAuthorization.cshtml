@@ -1,0 +1,35 @@
+﻿@model SumkaWeb.Models.VKAuthorizationModel
+
+@{
+    ViewBag.Title = "VKAuthorization";
+}
+
+<h2>VKAuthorization</h2>
+
+<table>
+    <tr>
+       
+        <th>
+            AccesToken
+        </th>
+        <th>
+            ExpiresIn
+        </th>
+        <th>
+            UserId
+        </th>
+        
+    </tr>
+
+        <td>
+            @Model.access_token
+        </td>
+        <td>
+            @Model.expires_in
+        </td>
+        <td>
+            @Model.user_id
+        </td>
+        
+
+</table>

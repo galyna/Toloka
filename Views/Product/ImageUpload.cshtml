@@ -1,0 +1,18 @@
+﻿@model TolokaStudio.Models.CombinedHTMLImageUpload
+
+<div style="float: left;">
+    @using (Html.BeginForm("ImageUpload", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+            @Html.Label(Model.SelectLabel)       
+            <input type="file" id="fileUpload" name="fileUpload" style="width: 300px;" /><br />              
+            <input type="submit" name="Submit" id="Submit" value="Завантажити" style="margin-top: 7px;" />
+             @Html.DisplayFor(model => model.Message)
+    }
+</div>
+
+<br />
+<br />
+<div class="span6 imageUploaded">
+   @Html.Raw(Model.ImageUploaded)
+</div>
+

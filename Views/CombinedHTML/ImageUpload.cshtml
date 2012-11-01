@@ -1,0 +1,47 @@
+﻿@model TolokaStudio.Models.CombinedHTMLImageUpload
+
+<div style="float: left; width: 250px;">
+    @Html.Label("Select images folder")
+    <br />
+    @Html.DropDownList("selectedFolder", new SelectList(Model.Folders, "Url", "Name", Model.SelectedFolder), new { style = "width: 200px;", id = "selectedFolder", onchange = "javascript:folderChange();" })
+</div>
+<div style="float: left; width: 250px;">
+  @using (Html.BeginForm("ImageUpload", "CombinedHTML", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    { 
+        @Html.Label("Select image for upload")
+        <input type="file" id="fileUpload" name="fileUpload" style="width: 300px;" /><br />
+        <input type="submit" name="Submit" id="Submit" value="Upload" style="margin-top: 7px;" />
+        <script type="text/javascript">
+            function folderChange() {                
+                document.getElementById('selectedFolderUrl').value = document.getElementById('selectedFolder').options[document.getElementById('selectedFolder').selectedIndex].value;
+                updateSlider();
+            }
+            function updateSlider() {
+                
+                var folderValue = document.getElementById('selectedFolder').options[document.getElementById('selectedFolder').selectedIndex].value,
+                 options = {};
+                options.ActionUrl = "CombinedHTML/GetImagesList";
+                options.SelectedFolder = folderValue;
+                parent.ImageDialog.initSliderThumbs(options);
+            }
+            (function () {
+                updateSlider();
+            }());
+         
+        </script>
+        <input type="hidden" name="selectedFolderUrl" id="selectedFolderUrl" />
+    }
+</div>
+@*<div style="float: right; width: 250px;">
+    @using (Url.Action("CreateImageFolder", "CombinedHTML",  new { enctype = "multipart/form-data", style = "float:right;width:300px;" },FormMethod.Post.ToString())
+    { 
+    
+        @Html.Label("Enter new folder name")
+        <input type="text" id="folderName" name="folderName" style="width: 300px;" /><br />
+        <input type="submit" name="SubmitfolderName" id="SubmitfolderName" value="Create folder"
+            style="margin-top: 7px;" />
+    }
+</div>*@
+<div style="float: left;">
+    @Html.DisplayFor(model => model.Message)
+</div>

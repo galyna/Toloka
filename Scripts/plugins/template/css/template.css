@@ -1,0 +1,46 @@
+#frmbody
+{
+    padding:  0px !important;
+    background-color: #FFF;
+    border: 1px solid #CCC;
+    height:580px;
+    width:1040px;
+}
+#frmbody body
+{
+    padding: 0px;
+    
+    width:950px;
+}
+
+.frmRow
+{
+    padding: 0px;
+    margin-bottom: 10px;
+}
+
+#templatesrc
+{
+    padding: 0px;
+    border: none;
+}
+
+.title
+{
+    padding-bottom: 5px;
+}
+
+.mceActionPanel
+{
+    padding-top: 5px;
+}
+
+body{
+  padding: 0px !important;
+
+}
+
+mce_template_create{
+  padding: 0px !important;
+
+}

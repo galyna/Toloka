@@ -1,0 +1,122 @@
+/*******************
+    slider main page
+********************/
+.slider_main_item_img_bg{
+    background:transparent;
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#60090A10,endColorstr=#60090A10);
+    zoom: 1;
+}
+.box_main_item_img_bg{
+    background:transparent;
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#60090A10,endColorstr=#60090A10);
+    zoom: 1;
+}
+.box_main_item_img_bg{
+    background:transparent;
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#090A1049,endColorstr=#090A1049);
+    zoom: 1;
+}
+.products_wrap .box_main_item_img_bg{
+    background:transparent;
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#090A1020,endColorstr=#090A1020);
+    zoom: 1;
+}
+.company_managmen_wrap:hover .company_managmen_img_bg{
+    background:transparent;
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#0E559E50,endColorstr=#0E559E50);
+    zoom: 1;
+}
+/******************
+    Dr.Eleks Circle
+*******************/
+.dr_promo_circle.gradient{
+    background: none;
+}
+.dr_promo_circle{
+    border: none;
+}
+.dr_promo_circle .dr_promo_circle_white{
+    background: none;
+}
+/* Circle 1*/
+.promo_circle_position.circle_1{
+    bottom: 20px;
+    left: 35px;
+}
+.circle_1 .dr_promo_circle{
+    background: url("../img/dr_Eleks/circle_IE_1.png") center center no-repeat;
+    width: 120px;
+    height: 120px;
+}
+.circle_1 .dr_promo_circle_white .dr_promo_circle_content{
+    padding-left: 24px;
+    padding-top: 40px;
+}
+/* Circle 2*/
+.promo_circle_position.circle_2{
+    bottom: 95px;
+    left: 270px;
+}
+.circle_2 .dr_promo_circle{
+    background: url("../img/dr_Eleks/circle_IE_2.png") center center no-repeat;
+    width: 165px;
+    height: 165px;
+}
+.circle_2 .dr_promo_circle_white .dr_promo_circle_content{
+    padding-left: 45px;
+    padding-top: 55px;
+}
+.circle_2 .dr_promo_circle_white .dr_promo_circle_content h4{
+    margin-left:  -5px;
+}
+
+/* Circle 3*/
+.promo_circle_position.circle_3{
+    bottom: -10px;
+    left: 515px;
+}
+.circle_3 .dr_promo_circle_img_IE{
+    background: url("../img/dr_Eleks/circle_IE_3.png") center center no-repeat;
+    width: 259px;
+    height: 260px;
+    position: absolute;
+    left: -4px;
+    top: -2px;
+}
+.circle_3 .dr_promo_circle .dr_promo_circle_white{
+    width: 260px;
+    height: 260px
+}
+.circle_3 .dr_promo_circle_white .dr_promo_circle_content{
+    padding: 2px
+}
+/* Circle 4*/
+.promo_circle_position.circle_4{
+    bottom: 105px;
+    left: 800px;
+}
+.circle_4 .dr_promo_circle{
+    background: url("../img/dr_Eleks/circle_IE_4.png") center center no-repeat;
+    width: 191px;
+    height: 191px;
+}
+.circle_4 .dr_promo_circle_white .dr_promo_circle_content{
+    padding-left: 25px;
+    padding-top: 55px;
+}
+.circle_4 .dr_promo_circle_white .dr_promo_circle_content h4{
+    margin-left:  -5px;
+}
+
+/************
+    Graph bg
+************/
+.promo_graph_bg{
+    background: url("../img/graph_bg_IE.png") left top no-repeat;
+}
+.garp_blue_warp{
+    display: none;
+}
+.garp_green_warp{
+    display: none;
+}

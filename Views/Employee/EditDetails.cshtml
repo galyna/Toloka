@@ -1,0 +1,29 @@
+﻿@model TolokaStudio.Models.DetailsModel 
+@using ViewRes.Home
+<script src="@Url.Content("~/Scripts/tiny_mce_src.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/combinedHTML-tinymce.js")" type="text/javascript"></script>
+<div class="container">
+    @using (Html.BeginForm())
+    {
+        <fieldset>
+            <div class="row">
+                <div class="span24">
+                  @Html.HiddenFor(model => model.Id)
+                    @Html.LabelFor(m => m.HtmlDetail)
+                    @Html.TextAreaFor(m => m.HtmlDetail, new Dictionary<string, object> { { "class", "html tinymce" } })
+                </div>
+            </div>
+            <div class="row">
+                <input type="submit" value="@Home.Save" />
+            </div>
+        </fieldset>}
+</div>
+<script type="text/javascript">
+//<![CDATA[
+    $(document).ready(function () {
+        ajaxLoad('@Request.Url.Scheme' + "://" + '@Request.Url.DnsSafeHost' + ":" + '@Request.Url.Port' + '@Request.ApplicationPath');
+
+    });
+    
+//]]>
+</script>

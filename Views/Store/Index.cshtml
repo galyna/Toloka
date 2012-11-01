@@ -1,0 +1,65 @@
+﻿@model TolokaStudio.Models.StoreIndexModel
+@using ViewRes.Home
+@using ViewRes.Store
+<script src="/Content/js/admin.js"></script>
+<div class="container">
+    @foreach (var item in Model.Users)
+    {
+        <div class="row">
+            <div class="span10">
+                @Html.Raw(item.UserName)
+                @if (item.Role.IsAdmin)
+                { @Html.Raw("в ролі Aдмін ") }
+                @if (item.Role.IsAuthor)
+                { @Html.Raw("в ролі Автор ") }
+            </div>
+            <div class="span4 offset2">
+                @Html.ActionLink("Дозволити роль Автор", "SetAsAuthor", new { id = item.Id })
+                @Html.ActionLink("Дозволити роль Aдмін", "SetAsAdmin", new { id = item.Id })
+            </div>
+        </div>
+                   
+    }
+    <div class="row">
+        @Html.ActionLink(Store.Create_Store, "Create")
+    </div>
+    @foreach (var item in Model.Stores)
+    { 
+        <div class="row">
+            @Html.Raw(System.Web.HttpUtility.HtmlDecode(item.HtmlBanner))
+            <div class="span2 offset1">
+                @Html.ActionLink(Home.Edit, "Edit", new { id = item.Id })
+                @Html.ActionLink(Home.Delete, "Delete", new { id = item.Id })
+            </div>
+        </div>
+    }
+    @foreach (var item in Model.Employees)
+    {
+        <div class="row">
+            @if (item.HtmlBannerEdit != null)
+            {
+                @Html.Raw(System.Web.HttpUtility.HtmlDecode(item.HtmlBannerEdit))
+
+                <div class="span6">
+                    <br />
+                    <br />
+                    @Html.ActionLink("Delete", "Delete", "Employee", new { Id = item.Id }, null)
+                    <br />
+                    @Html.ActionLink("Edit", "Edit", "Employee", new { Id = item.Id }, null)
+                    <br />
+                    @Html.ActionLink("Publish", "Publish", "Employee", new { Id = item.Id }, null)
+                    <br />
+                    @Html.ActionLink("Unpublish", "Unpublish", "Employee", new { Id = item.Id }, null)
+                </div>
+            }
+        </div>  
+                         
+    }
+</div>
+<script type="text/javascript">
+//<![CDATA[
+    $(document).ready(function () {
+        Admin.init();
+    });
+//]]>
+</script>

@@ -1,0 +1,73 @@
+.b-content p{
+    margin-bottom: 12px;
+    margin-top: 11px;
+}
+.b-content h2{
+    margin-top: 10px;
+}
+.full_text .b-content{
+    padding: 40px;
+}
+.number{
+    position: relative;
+    padding-left: 30px;
+}
+.number span{
+    font-family: BebasNeueRegular;
+    font-size: 46px;
+    color: #0191a2;
+    position: absolute;
+    left: 0;
+    top: 12px;
+}
+/*****************
+    Ul LI styling
+******************/
+.b-content ul{
+    margin: 0;
+    padding: 6px 0 0;
+}
+.b-content ul li{
+    line-height: 22px;
+    list-style: none;
+    background: url("../img/list_style_typ_sd.png") left 15px no-repeat;
+    padding-bottom: 4px;
+    padding-left: 30px;
+    padding-top: 4px;
+}
+/*Typ1 list*/
+.b-content ul.typ_sd li{
+    background: url("../img/list_style_typ_sd.png") left 15px no-repeat;
+}
+/*Typ2 list*/
+.b-content ul.typ_lc li{
+    background: url("../img/list_style_typ_lc.png") left 15px no-repeat;
+}
+/*Typ3 list*/
+.b-content ul.typ_ts li{
+    background: url("../img/list_style_typ_ts.png") left 15px no-repeat;
+}
+/*Typ4 list*/
+.b-content ul.typ_rd li{
+    background: url("../img/list_style_typ_rd.png") left 15px no-repeat;
+}
+/*Typ5 list*/
+.b-content ul.typ_eleks_basic li{
+    background: url("../img/list_style_typ_eleks_basic.png") left 15px no-repeat;
+}
+
+/***************
+    Blockquote
+****************/
+.b-content blockquote{
+    margin-top: 10px;
+    background: url("../img/comment_quotes.png") left top no-repeat;
+    color: #777777;
+    padding-left: 40px;
+    border-left: none;
+    float: left;
+}
+.b-content blockquote li{
+    background: url("../img/list_style_comment.png") left 16px no-repeat;
+    padding-left: 20px;
+}

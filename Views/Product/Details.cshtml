@@ -1,0 +1,9 @@
+﻿@model Core.Data.Entities.Product
+<div class="container">
+    <div class="row">
+        @if (Model.HtmlDetail != null)
+        {
+            @Html.Raw(System.Web.HttpUtility.HtmlDecode(Model.HtmlDetail));
+        }
+    </div>
+</div>

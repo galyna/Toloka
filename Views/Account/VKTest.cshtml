@@ -1,0 +1,59 @@
+﻿@model TolokaStudio.Models.VKAuthorization
+
+@{
+    ViewBag.Title = "VKTest";
+}
+
+<h2>VKTest</h2>
+
+<table>
+    <tr>
+        <th>
+            Code
+        </th>
+        <th>
+            Test
+        </th>
+        <th>
+            AccesToken
+        </th>
+        <th>
+            ExpiresIn
+        </th>
+        <th>
+            UserId
+        </th>
+        <th>
+            Error
+        </th>
+        <th>
+            ErrorDescription
+        </th>
+        <th></th>
+    </tr>
+
+    <tr>
+        <td>
+            @Model.Code
+        </td>
+        <td>
+            @Model.Test
+        </td>
+        <td>
+            @Model.AccesToken
+        </td>
+        <td>
+            @Model.ExpiresIn
+        </td>
+        <td>
+            @Model.UserId
+        </td>
+        <td>
+            @Model.Error
+        </td>
+        <td>
+            @Model.ErrorDescription
+        </td>
+    </tr>
+
+</table>

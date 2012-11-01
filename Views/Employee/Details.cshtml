@@ -1,0 +1,14 @@
+﻿@model Core.Data.Entities.Employee
+@using ViewRes.Home
+@{
+    ViewBag.Title = Home.Author;
+}
+<div class="container">
+    <div class="row">
+        @if (Model != null)
+        {<div class="row">
+           @Html.Raw(System.Web.HttpUtility.HtmlDecode(Model.HtmlDetail))
+       </div>
+        }
+    </div>
+</div>

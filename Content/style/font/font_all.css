@@ -1,0 +1,70 @@
+@font-face {
+    font-family: 'EuropeRegular';
+    src: url('eur_____-webfont.eot');
+    src: url('eur_____-webfont.eot?#iefix') format('embedded-opentype'),
+         url('eur_____-webfont.woff') format('woff'),
+         url('eur_____-webfont.ttf') format('truetype'),
+         url('eur_____-webfont.svg#EuropeRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'EuropeBold';
+    src: url('eur____b.eot');
+    src: url('eur____b.eot?#iefix') format('embedded-opentype'),
+         url('eur____b.woff') format('woff'),
+         url('eur____b.ttf') format('truetype'),
+         url('eur____b.svg#EuropeBold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'EuropeItalic';
+    src: url('eur____o.eot');
+    src: url('eur____o.eot?#iefix') format('embedded-opentype'),
+         url('eur____o.woff') format('woff'),
+         url('eur____o.ttf') format('truetype'),
+         url('eur____o.svg#EuropeItalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'EuropeBoldItalic';
+    src: url('eur___bo.eot');
+    src: url('eur___bo.eot?#iefix') format('embedded-opentype'),
+         url('eur___bo.woff') format('woff'),
+         url('eur___bo.ttf') format('truetype'),
+         url('eur___bo.svg#EuropeBoldItalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'EuropeDemiRegular';
+    src: url('eur___dm.eot');
+    src: url('eur___dm.eot?#iefix') format('embedded-opentype'),
+         url('eur___dm.woff') format('woff'),
+         url('eur___dm.ttf') format('truetype'),
+         url('eur___dm.svg#EuropeDemiRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'EuropeDemiItalic';
+    src: url('eur__dmo.eot');
+    src: url('eur__dmo.eot?#iefix') format('embedded-opentype'),
+         url('eur__dmo.woff') format('woff'),
+         url('eur__dmo.ttf') format('truetype'),
+         url('eur__dmo.svg#EuropeDemiItalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'BebasNeueRegular';
+    src: url('BebasNeue-webfont.eot');
+    src: url('BebasNeue-webfont.eot?#iefix') format('embedded-opentype'),
+         url('BebasNeue-webfont.woff') format('woff'),
+         url('BebasNeue-webfont.ttf') format('truetype'),
+         url('BebasNeue-webfont.svg#BebasNeueRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}

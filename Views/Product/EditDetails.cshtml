@@ -1,0 +1,143 @@
+﻿@model TolokaStudio.Models.DetailsModel 
+@using ViewRes.Home
+<script src="/Content/js/product_details_edit.js"></script>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />
+<script src="http://code.jquery.com/jquery-1.8.2.js"></script>
+<script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
+<!--Include YUI Loader: --> 
+<script type="text/javascript" src="http://yui.yahooapis.com/2.9.0/build/yuiloader/yuiloader-min.js"></script> 
+
+<style>
+    body
+    {
+        font-size: 62.5%;
+    }
+    label, input
+    {
+        display: block;
+    }
+    input.text
+    {
+        margin-bottom: 12px;
+        width: 95%;
+        padding: .4em;
+    }
+    fieldset
+    {
+        padding: 0;
+        border: 0;
+        margin-top: 25px;
+    }
+    h1
+    {
+        font-size: 1.2em;
+        margin: .6em 0;
+    }
+    div#users-contain
+    {
+        width: 350px;
+        margin: 20px 0;
+    }
+    div#users-contain table
+    {
+        margin: 1em 0;
+        border-collapse: collapse;
+        width: 100%;
+    }
+    div#users-contain table td, div#users-contain table th
+    {
+        border: 1px solid #eee;
+        padding: .6em 10px;
+        text-align: left;
+    }
+    .ui-dialog .ui-state-error
+    {
+        padding: .3em;
+    }
+    .validateTips
+    {
+        border: 1px solid transparent;
+        padding: 0.3em;
+    }
+</style>
+<div class="container">
+    @using (Html.BeginForm())
+    {
+        <fieldset>
+            <div class="span24">
+                <div class="container_bg_white content_right">
+                    <div class="row">
+                        <div class="span15">
+                            <div class="b-content_img">
+                                <img id="uploadbigImg" class="uploadbigImg" src="/Content/img/Coffe.png" /></div>
+                        </div>
+                        <div class="span7 offset1">
+                            <div class="b-content   paragraphs">
+                                <h2 class="uppercase">
+                                    Назва товару</h2>
+                                <p>
+                                    Автор:
+                                </p>
+                                <p>
+                                    Розділ:
+                                </p>
+                                <p>
+                                    Ціна:
+                                </p>
+                                <p>
+                                    <input type="button" id="addImg" value="Завантажити основне зображення" /></p>
+                                <p>
+                                    <input type="button" id="addsmall" value="Додати зображення" /></p>
+                                <p>
+                                    <input type="button" id="addtext" value="Додати текст" /></p>
+                                    
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          
+            <div class="row ">
+                <div class=" span24 addsmallImg">
+                </div>
+            </div>
+            
+         
+            <div class="row">
+                <input type="submit" value="@Home.Save" />
+            </div>
+        </fieldset>}
+    <div class="container templateupload">
+        <div class="row ">
+            <div class="span24">
+                <iframe id="templatesrc" name="templatesrc" src="/Product/ImageUpload" frameborder="0"
+                    style="float: left; width: 700px; height: 720px"></iframe>
+            </div>
+        </div>
+    </div>
+    <div class="container templateuploadsmall">
+        <div class="row ">
+            <div class="span24">
+                <iframe id="templatesrcsmall" name="templatesrcsmall" src="/Product/ImageUploadSmall"
+                    frameborder="0" style="float: left; width: 500px; height: 380px"></iframe>
+            </div>
+        </div>
+    </div>
+    <div class="container paragraph">
+        <div class="row ">
+            <div class="span8">
+                <textarea id="paragraphtext" cols="55" rows="14" ></textarea>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+//<![CDATA[
+    $(document).ready(function () {
+        $('#templatesrc').load(function () {
+            ProductDetailEdit.init();
+        });
+    });
+    
+//]]>
+</script>

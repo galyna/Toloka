@@ -1,0 +1,117 @@
+﻿@using TolokaStudio.Common.Extensions
+@using ViewRes.Home
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    <link href="@Url.Content("~/Content/style/toloka_content.css")" rel="stylesheet" type="text/css" />
+    <script src="@Url.Content("~/Scripts/jquery/jquery.js")" type="text/javascript"></script>
+
+</head>
+<body class="no_js_body">
+    <!--Block Menu-->
+    <script type="text/javascript">
+        document.body.className = "";
+    </script>
+    <div class="wrap_site">
+        <div class="menu_wrap">
+            <div class="container">
+                <div class="menu_top">
+                    <div class="menu_top_list">
+                        @Html.Menu(
+                    "<ul class='navigation'>" +
+                       "<li><a class='typ3' href='" + "/Home" + "'>" + Home.Products + "</a></li>" +
+                       " <li class='first'><a class='link typ1' href='" + "/Home/Category" + "'>" + Home.Stores + "</a></li>" +
+
+                       " <li><a class='typ4' href='/Employee'>" + Home.Authors + "</a></li>" +
+                       " <li><a class='typ5' href='/Bascet'>" + Home.Bascet + "</a></li>" +
+                        
+                       " <li ><a class='typ6' href='http://vk.com/public43703617'>Контакти</a></li>" +
+
+                   " </ul>")
+                        <div class="clear">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Block Menu ends-->
+        <div class="container">
+            <div class="copyright_and_min_menu_wrap">
+                <div class="row">
+                    <div class="span18"> 
+                        <div class="copyright">
+                            @Home.LogoText
+                            Увійдіть в магазин та додайте товар у кошик
+                        </div>
+                    </div>
+                    <div class="span6 LogOnPartial">
+                        @Html.Partial("_LogOnPartial")
+                    </div>
+                </div>
+            </div>
+            @RenderBody()
+             
+        </div>
+        <div class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="span19">
+                        <div class="menu_footer">
+                            @Html.Menu(
+                          "<ul class='navigation'>" +
+                                "<li><a class='typ3' href='" + "/Home" + "'>" + Home.Products + "</a></li>" +
+                                " <li class='first'><a class='link typ1' href='" + "/Home/Category" + "'>" + Home.Stores + "</a></li>" +
+                                " <li><a class='typ4' href='/Employee'>" + Home.Authors + "</a></li>" +
+                                " <li><a class='typ5' href='/Bascet'>" + Home.Bascet + "</a></li>" +
+                                " <li ><a class='typ6' href='http://vk.com/public43703617'>Контакти</a></li>" +
+
+                            "</ul>")
+                            <div class="clear">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="span5">
+                        <div class="social_link_wrap">
+                            <div class="social_link_text">
+                                <div class="copyright">
+                                    Ми ще тут:
+                                </div>
+                            </div>
+                            <div class="social_icons">
+                                <ul>
+                                    @* <li class="facebook"><a href="#"></a></li>
+                                    <li class="twitter"><a href="#"></a></li>
+                                    <li class="linkedin"><a href="#"></a></li>*@
+                                    <li class="youtube"><a href="http://www.youtube.com/watch?v=JkePvKqQ-g0&feature=BFa&list=PL743A5BA25DFCEC99">
+                                    </a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--********************
+    JavaScrip all links
+**********************-->
+        <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+        <script src="@Url.Content("~/Content/assets/js/google-code-prettify/prettify.js")"></script>
+        <script src="@Url.Content("~/Content/js/scroller_load_img.js")"></script>
+        <!--Menu full width-->
+        <script src="@Url.Content("~/Scripts/sumkaScripts/menu_full_width.js")" type="text/javascript"></script>
+       
+        <script type="text/javascript">
+
+            window.onload = window.onresize = function (event) {
+
+                /*Menu top*/
+                MenuResizer.resize(".menu_top", ".menu_top_list", true);
+
+            }
+
+        </script>
+        <!--Menu full width ends-->
+</body>
+</html>

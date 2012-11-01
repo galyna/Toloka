@@ -1,0 +1,21 @@
+@import "../../Content/style/style.css";
+@import "../../Content/style/customization_style.css";
+@import "../../Content/style/responsive.css";
+
+
+.template-hover { border:2px solid red;}
+.mceButton {display:inline; border:1px solid #F0F0EE; width:20px; height:20px; margin-right:1px}
+.mce_image {background-position:-380px 0}
+.mce_link {background-position:-500px 0}
+
+.storecreatefield input.text-box { color: Red;}
+.storecreatefield{
+  width:100%;
+    color: Red;
+border:2px solid red;
+}
+.required{
+  color: Red;
+
+}
+
