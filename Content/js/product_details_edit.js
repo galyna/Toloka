@@ -5,8 +5,8 @@ var ProductDetailEdit = {
 
         $(".templateupload").dialog({
             autoOpen: false,
-            height: 780,
-            width: 750,
+            height: 600,
+            width: 700,
             modal: true,
             title: "Завантажити зображення",
             buttons: {
@@ -17,7 +17,7 @@ var ProductDetailEdit = {
                     $(this).dialog("close");
 
                 },
-                Cancel: function () {
+                "Відміна": function () {
                     $(this).dialog("close");
                 }
             },
@@ -33,12 +33,20 @@ var ProductDetailEdit = {
     },
 
     uploadSmallImg: function () {
+        $(".imgbigshow").dialog({
+            autoOpen: false,
+            height: 600,
+            width: 620,
+            modal: true,
+            close: function () {
 
+            }
+        });
 
 
         $(".templateuploadsmall").dialog({
             autoOpen: false,
-            height: 400,
+            height: 350,
             width: 550,
             modal: true,
             title: "Завантажити зображення",
@@ -47,24 +55,27 @@ var ProductDetailEdit = {
                     var image = top.frames["templatesrcsmall"].document.getElementById('ImageUploaded');
                     var src = $(image).attr("src");
                     if ($(image).length > 0) {
-                       // if ($(".addsmallImg .span3").length == 0 ) {
-                            $(".addsmallImg ").append("<div class='span3' ><img id=" + src + " src=" + src + " /></div>");
+                        $(".addsmallImg ").append("<div class='span3 box_thumb_item'   ><img class='thumb'   src=" + src + " /><img  class='removebtn'   src='../../Content/img/q/delete_small.png'/></div>");
+                        var last = $(".addsmallImg :last-child");
 
-                        //}
-                       // else if ( $(".addsmallImg .span3").length % 6 == 0) {
-                        //    $(".addsmallImg ").append("<div class='box_main_item span3' ><img id=" + src + " src=" + src + " /></div>");
+                        $(".removebtn").click(function () {
+                            $(this).parent().remove();
+                        });
 
-                       // } else {
-                       //     $(".addsmallImg ").append("<div class='box_main_item span3' ><img id=" + src + "  src=" + src + " /></div>");
-                       // }
+                        $(last).click(function () {
+                            var smallsrc = $(".thumb", $(this)).attr("src");
+
+                            var srcbig = smallsrc.replace("imgThumbs", "imgFull");
+                            $("#imgbig").attr("src", srcbig)
+                            $(".imgbigshow").dialog("open");
+                        });
+
                     }
-//                    var Dom = YAHOO.util.Dom,
-//	                Event = YAHOO.util.Event;
-//                    var crop = new YAHOO.widget.ImageCropper(src);
+
                     $(this).dialog("close");
 
                 },
-                Cancel: function () {
+                "Відміна": function () {
                     $(this).dialog("close");
                 }
             },
@@ -79,6 +90,7 @@ var ProductDetailEdit = {
 
             });
     },
+
     addText: function () {
 
         $(".paragraph").dialog({
@@ -91,7 +103,7 @@ var ProductDetailEdit = {
                 "Зберегти": function () {
                     var text = $("#paragraphtext").val();
                     $(".paragraphs ").append("<p >" + text + " </p>");
-
+                    $("#paragraphtext").val("");
                     $(this).dialog("close");
 
                 },
@@ -109,10 +121,52 @@ var ProductDetailEdit = {
                 $(".paragraph").dialog("open");
             });
     },
+
+    save: function () {
+        $(".removebtn").remove();
+
+        var model = {
+            Id: $("#Id").val(),
+            HtmlDetail: $(".htmldetail").html()
+        };
+
+        var reuqest = $.ajax({
+            type: "post",
+            url: "/Product/EditDetails",
+            data: model,
+            dataType: "json",
+            success: function (data) {
+
+                window.location.reload(data);
+              
+            },
+            failure: function () {
+                window.location.reload(true);
+            }
+        });
+
+        $("#addtext")
+            .click(function () {
+                $(".paragraph").dialog("open");
+            });
+        },
+    deleteSmallImg: function () {
+
+        $(".span3.box_thumb_item").append("<img  class='removebtn'   src='../../Content/img/q/delete_small.png'/>");
+          $(".removebtn").click(function () {
+                            $(this).parent().remove();
+                        });
+    },
+
     init: function () {
         ProductDetailEdit.uploadBigImg();
         ProductDetailEdit.uploadSmallImg();
         ProductDetailEdit.addText();
+        ProductDetailEdit.deleteSmallImg();
+        $("#save")
+            .click(function () {
+                ProductDetailEdit.save();
+            });
 
     }
 };

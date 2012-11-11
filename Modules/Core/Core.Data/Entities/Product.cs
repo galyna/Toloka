@@ -15,6 +15,7 @@ namespace Core.Data.Entities
         public virtual string HtmlBannerOrderedNot { get; set; }
         public virtual string HtmlBannerEdit { get; set; }
         public virtual string HtmlBanner { get; set; }
+        public virtual string HtmlSmallBanner { get; set; }
         public virtual string HtmlDetail { get; set; }
         public virtual string ImagePath { get; set; }
         public Product()
@@ -24,6 +25,7 @@ namespace Core.Data.Entities
             HtmlBannerEdit = "";
             HtmlBannerOrdered = "";
             HtmlBannerOrderedNot = "";
+            HtmlSmallBanner = "";
         }
     }
 }

@@ -1,12 +1,11 @@
-﻿@model TolokaStudio.Models.DetailsModel 
+﻿@model Core.Data.Entities.Product 
 @using ViewRes.Home
 <script src="/Content/js/product_details_edit.js"></script>
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />
 <script src="http://code.jquery.com/jquery-1.8.2.js"></script>
 <script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
-<!--Include YUI Loader: --> 
-<script type="text/javascript" src="http://yui.yahooapis.com/2.9.0/build/yuiloader/yuiloader-min.js"></script> 
-
+<!--Include YUI Loader: -->
+<script type="text/javascript" src="http://yui.yahooapis.com/2.9.0/build/yuiloader/yuiloader-min.js"></script>
 <style>
     body
     {
@@ -64,70 +63,86 @@
     @using (Html.BeginForm())
     {
         <fieldset>
-            <div class="span24">
-                <div class="container_bg_white content_right">
-                    <div class="row">
-                        <div class="span15">
-                            <div class="b-content_img">
-                                <img id="uploadbigImg" class="uploadbigImg" src="/Content/img/Coffe.png" /></div>
-                        </div>
-                        <div class="span7 offset1">
-                            <div class="b-content   paragraphs">
-                                <h2 class="uppercase">
-                                    Назва товару</h2>
-                                <p>
-                                    Автор:
-                                </p>
-                                <p>
-                                    Розділ:
-                                </p>
-                                <p>
-                                    Ціна:
-                                </p>
-                                <p>
-                                    <input type="button" id="addImg" value="Завантажити основне зображення" /></p>
-                                <p>
-                                    <input type="button" id="addsmall" value="Додати зображення" /></p>
-                                <p>
-                                    <input type="button" id="addtext" value="Додати текст" /></p>
-                                    
+            @Html.HiddenFor(model => model.Id)
+            <p>
+                <input type="button" id="addImg" value="Завантажити основне зображення" /></p>
+            <p>
+                <input type="button" id="addsmall" value="Додати зображення" /></p>
+            <p>
+                <input type="button" id="addtext" value="Додати текст" /></p>
+            @if (string.IsNullOrEmpty(Model.HtmlDetail))
+            {
+                <div class="htmldetail">
+                    <div class="span24">
+                        <div class="container_bg_white content_right">
+                            <div class="row">
+                                <div class="span15">
+                                    <div class="b-content_img">
+                                        <img id="uploadbigImg" class="uploadbigImg" src="/Content/img/Coffe.png" /></div>
+                                </div>
+                                <div class="span7 offset1">
+                                    <div class="b-content   paragraphs">
+                                        <h2 class="uppercase">
+                                            @Html.Raw(Model.Name)</h2>
+                                        <p>
+                                            <div class="employee_details">
+                                                Автор:@Html.Raw(Model.Employee.FirstName)
+                                                @Html.Raw(Model.Employee.LastName)
+                                            </div>
+                                        </p>
+                                        <p>
+                                            Розділ: @Html.Raw(Model.Store.Name)
+                                        </p>
+                                        <p>
+                                            Ціна: @Html.Raw(Model.Price.ToString() + " грн.")
+                                        </p>
+                                        <p>
+                                            <div class="create_order">
+                                                <img src='../../Content/img/q/shopping_cart_1.gif' title='Додати в кошик' />
+                                            </div>
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="span24 addsmallImg"/>
+                      
+                    </div>
                 </div>
-            </div>
-          
-            <div class="row ">
-                <div class=" span24 addsmallImg">
+               
+            }
+            else
+            {
+                <div class="htmldetail">
+                    @Html.Raw(System.Web.HttpUtility.HtmlDecode(Model.HtmlDetail))
                 </div>
-            </div>
-            
-         
+            }
+            <br />
+            <br />
             <div class="row">
-                <input type="submit" value="@Home.Save" />
+                <input type="button" id="save" value="@Home.Save" />
             </div>
         </fieldset>}
-    <div class="container templateupload">
-        <div class="row ">
-            <div class="span24">
-                <iframe id="templatesrc" name="templatesrc" src="/Product/ImageUpload" frameborder="0"
-                    style="float: left; width: 700px; height: 720px"></iframe>
-            </div>
-        </div>
+    <div class="templateupload">
+        <iframe id="templatesrc" name="templatesrc" src="/Product/ImageUpload" frameborder="0"
+            style="float: left; width: 700px; height: 600px"></iframe>
     </div>
-    <div class="container templateuploadsmall">
-        <div class="row ">
-            <div class="span24">
-                <iframe id="templatesrcsmall" name="templatesrcsmall" src="/Product/ImageUploadSmall"
-                    frameborder="0" style="float: left; width: 500px; height: 380px"></iframe>
-            </div>
-        </div>
+    <div class=" templateuploadsmall">
+        <iframe id="templatesrcsmall" name="templatesrcsmall" src="/Product/ImageUploadSmall"
+            frameborder="0" style="float: left; width: 500px; height: 340px"></iframe>
     </div>
     <div class="container paragraph">
         <div class="row ">
             <div class="span8">
-                <textarea id="paragraphtext" cols="55" rows="14" ></textarea>
+                <textarea id="paragraphtext" cols="55" rows="14"></textarea>
             </div>
+        </div>
+    </div>
+    <div class="container imgbigshow">
+        <div class="row ">
+            <img id="imgbig"></img>
         </div>
     </div>
 </div>

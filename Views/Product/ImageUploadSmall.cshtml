@@ -6,11 +6,12 @@
             @Html.Label(Model.SelectLabel)       
             <input type="file" id="fileUpload" name="fileUpload" style="width: 300px;" /><br />              
             <input type="submit" name="Submit" id="SubmitImageUpload" value="Завантажити" style="margin-top: 7px;" />
-             @Html.DisplayFor(model => model.Message)
+             
     }
 </div>
 
 <br />
+@Html.DisplayFor(model => model.Message)
 <br />
 <div class="span6 imageUploaded">
    @Html.Raw(Model.ImageUploaded)

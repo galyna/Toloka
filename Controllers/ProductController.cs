@@ -57,11 +57,16 @@ namespace TolokaStudio.Controllers
                   " </a>" +
                   "</div>" +
                   " </div>";
+        private const string _productSmallBenner =
+                  " <div class='span3'>" +             
+                  " <a href='/Bascet'>" +                          
+                   " <img  src='{0}' />" +
+                 " </a>" +
+                 " </div>";
 
 
         private const string _productBennerOrder = "<div class='template order{0}'>" + " <div class='span8'>" +
                 " <div class='box_main_item'>" +
-                  " <img class='orderBtn' title='Додати в кошик Назва'  alt='{0}'  src='" + DefaulImgBascet + "' />" +
            " <img class='makeOrder'  title='Замовити Назва' alt='{0}'  src='" + DefaulImgBascetOrder + "' />" +
            " <img class='deleteBtn' alt='{0}'  title='Видалити з кошика Назва' src='" + DefaulImgBascetDelete + "'/>" +
                "  </div>" +
@@ -81,6 +86,13 @@ namespace TolokaStudio.Controllers
                   " </a>" +
                   "</div>" +
                   " </div>";
+
+
+        private const string employeeDetails = @"<a href='/Employee/Details?id={0}'>Автор:{1} {2}</a></div>";
+        private const string orderCreate = @" <a href='/Order/Create?Id=@Model.Id'> <img src='../../Content/img/q/shopping_cart_1.gif' title='Додати в кошик' />    </a>";
+                                    
+                                           
+                                          
         #endregion
         #region edit
         private const string _productBennerTemplate = "<div class='template order{0}'>" +
@@ -116,7 +128,7 @@ namespace TolokaStudio.Controllers
              "<img  src='" + DefaulImgUnpublish + "' alt='{0}' title='Не публікувати'/>" +
                " </a>" +
                  " <a href='/Product/EditDetails?id={0}' >" +
-           " <img   title='Редагувати сторінку' alt='{0}'   src='" + DefaulImgEditDetails + "' />" +
+           " <img   title='Створити сторінку' alt='{0}'   src='" + DefaulImgEditDetails + "' />" +
                 " </a>" +
               "  </div>" +
                " <a href='/Product/Edit?id={0}'>" +
@@ -244,11 +256,9 @@ namespace TolokaStudio.Controllers
             User user = UserRepository.Get(u => u.UserName == User.Identity.Name).SingleOrDefault();
             if (user != null && user.Role.IsAdmin || user.Role.IsAuthor)
             {
-                string html = HttpUtility.HtmlDecode(ProductsRepository.Get(s => s.Id == id).SingleOrDefault().HtmlDetail);
-                DetailsModel model = new DetailsModel();
-                model.Id = id;
-                model.HtmlDetail = html != null ? html : "";
-                return View(model);
+                Product product = ProductsRepository.Get(s => s.Id == id).SingleOrDefault();
+               
+                return View(product);
             }
 
             return null;
@@ -258,10 +268,10 @@ namespace TolokaStudio.Controllers
         // POST: /Employee/Edit/5
 
         [HttpPost]
-        public ActionResult EditDetails(DetailsModel model)
+        public ActionResult EditDetails(ProductDetail model)
         {
             User user = UserRepository.Get(u => u.UserName == User.Identity.Name).SingleOrDefault();
-            if (user != null && user.Role.IsAdmin || user.Role.IsAuthor)
+            if (user != null && user.Role.IsAdmin || user.Role.IsAuthor || !String.IsNullOrEmpty(model.HtmlDetail))
             {
 
                 try
@@ -270,15 +280,14 @@ namespace TolokaStudio.Controllers
                     product.HtmlDetail = Server.HtmlEncode(model.HtmlDetail);
                     ProductsRepository.SaveOrUpdate(product);
 
-                    return RedirectToAction("Edit", "Product", new { Id = model.Id });
+                    return Json("\\Product\\Details?id=" + model.Id);
                 }
                 catch
                 {
                     return View(model);
                 }
             }
-
-            return null;
+            return View(model);
         }
         #endregion
 
@@ -349,6 +358,82 @@ namespace TolokaStudio.Controllers
         #endregion
         #region Image
 
+
+        public ActionResult BannerImageUpload()
+        {
+            return PartialView("BannerImageUpload", new CombinedHTMLImageUpload());
+        }
+
+
+        [HttpPost, ActionName("BannerImageUpload")]
+        public ActionResult BannerImageUpload(HttpPostedFileBase fileUpload)
+        {
+            var fileUploaded = (fileUpload != null && fileUpload.ContentLength > 0) ? true : false;
+            var viewModel = new CombinedHTMLImageUpload();
+
+            try
+            {
+
+                if (!fileUploaded)
+                {
+                    viewModel.Message = string.Format("Не вдалось завантажити зображення.");
+                    Console.WriteLine(viewModel.Message);
+                    return PartialView("BannerImageUpload", viewModel);
+                }
+
+                string fileName = SaveBannerImage();
+
+                viewModel.ImageUploaded = "<IMG id='ImageUploaded' src=" + fileName + " style='float: left;'/>";
+                viewModel.Message = string.Format("Зображення {0} було успішно завантажено.{1}", fileName, Server.MapPath(fileName));
+            }
+            catch (Exception)
+            {
+
+                Console.WriteLine(viewModel.Message);
+                return PartialView("BannerImageUpload", viewModel);
+            }
+
+            return PartialView(viewModel);
+        }
+
+        private string SaveBannerImage()
+        {
+            var image = WebImage.GetImageFromRequest();
+            if (image != null)
+            {
+                if (image.Width > 310)
+                {
+                    image.Resize(310, ((310 * image.Height) / image.Width));
+                }
+
+                var filename = Path.GetFileName(image.FileName);
+                image.Save(Path.Combine("~/Content/img/Product/imgBigBanner", filename));
+                var filepath = Path.Combine("/Content/img/Product/imgBigBanner", filename);
+                var width = image.Width;
+                var height = image.Height;
+
+                if (width > height)
+                {
+                    var leftRightCrop = (width - height) / 2;
+                    image.Crop(0, leftRightCrop, 0, leftRightCrop);
+                }
+                else if (height > width)
+                {
+                    var topBottomCrop = (height - width) / 2;
+                    image.Crop(topBottomCrop, 0, topBottomCrop, 0);
+                }
+
+                if (image.Width > 80)
+                {
+                    image.Resize(80, ((80 * image.Height) / image.Width));
+
+                }
+                image.Save(Path.Combine("~/Content/img/Product/imgSmallBanner", filename));
+                return Url.Content(filepath);
+
+            }
+            return "";
+        }
         private void SaveProductImage(ProductEditModel model)
         {
             var image = WebImage.GetImageFromRequest();
@@ -431,9 +516,9 @@ namespace TolokaStudio.Controllers
                     image.Crop(topBottomCrop, 0, topBottomCrop, 0);
                 }
 
-                if (image.Width > 100)
+                if (image.Width > 130)
                 {
-                    image.Resize(100, ((100 * image.Height) / image.Width));
+                    image.Resize(130, ((130 * image.Height) / image.Width));
 
                 }
                 image.Save(Path.Combine("~/Content/img/imgThumbs", filename));
@@ -547,7 +632,7 @@ namespace TolokaStudio.Controllers
                 HtmlBannerEdit = product.HtmlBannerEdit,
                 HtmlDetail = product.HtmlDetail,
                 HtmlBanner = product.HtmlBanner,
-                
+                HtmlSmallBanner = product.HtmlSmallBanner
             };
             return ProductEditModel;
         }
@@ -566,10 +651,12 @@ namespace TolokaStudio.Controllers
                 HtmlBannerEdit = string.Format(_productBennerTemplate, product.Id, product.ImagePath, product.Name, product.Price + " грн.");
             }
 
+            var HtmlSmallBanner = string.Format(_productSmallBenner, product.ImagePath.Replace("imgBigBanner", "imgSmallBanner")); 
             product.HtmlBanner = Server.HtmlEncode(HtmlBanner);
             product.HtmlBannerOrderedNot = Server.HtmlEncode(HtmlBannerOrderedNot);
             product.HtmlBannerOrdered = Server.HtmlEncode(HtmlBannerOrdered);
             product.HtmlBannerEdit = Server.HtmlEncode(HtmlBannerEdit);
+            product.HtmlSmallBanner = Server.HtmlEncode(HtmlSmallBanner);
 
 
         }

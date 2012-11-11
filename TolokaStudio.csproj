@@ -242,6 +242,8 @@
     <Content Include="Content\style\colorpicker.css" />
     <Content Include="Content\style\confirm.css" />
     <Content Include="Content\style\content.css" />
+    <Content Include="Content\style\Copy of demo.css" />
+    <Content Include="Content\style\Copy of site-style.css" />
     <Content Include="Content\style\customization_style.css" />
     <EmbeddedResource Include="Content\style\toloka_content.css" />
     <Content Include="Content\style\demo.css" />
@@ -455,6 +457,7 @@
     <Content Include="Views\CombinedHTML\ImageUpload.cshtml" />
     <Content Include="Views\Store\ImageUpload.cshtml" />
     <None Include="Content\assets\js\README.md" />
+    <Content Include="Content\style\Edit.cshtml" />
     <None Include="Content\style\font\BebasNeue-webfont.eot" />
     <None Include="Content\style\font\BebasNeue-webfont.ttf" />
     <None Include="Content\style\font\BebasNeue-webfont.woff" />
@@ -491,6 +494,17 @@
     <Content Include="Views\Product\ImageUpload.cshtml" />
     <Content Include="Views\Product\ImageUploadSmall.cshtml" />
     <Content Include="Views\Shared\VKAuthorization.cshtml" />
+    <Content Include="Views\Product\web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Views\Account\ChangePassword.cshtml" />
+    <Content Include="Views\Account\ChangePasswordSuccess.cshtml" />
+    <Content Include="Views\Account\LogOn.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\Users.cshtml" />
+    <Content Include="Views\Account\VKTest.cshtml" />
+    <Content Include="Content\style\Test.cshtml" />
+    <Content Include="Views\Product\BannerImageUpload.cshtml" />
     <None Include="Views\Store\Index.cshtml" />
     <Content Include="Views\web.config" />
     <Content Include="Views\Bascet\Index.cshtml" />

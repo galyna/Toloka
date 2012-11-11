@@ -35,11 +35,10 @@ namespace SumkaWeb.Controllers
 
 
 
-        [HttpPost]
-        public ActionResult Create(NewOrder newOrder)
+        public ActionResult Create(int Id)
         {
 
-            Product product = ProductsRepository.Get(s => s.Id == newOrder.ProductId).SingleOrDefault();
+            Product product = ProductsRepository.Get(s => s.Id == Id).SingleOrDefault();
             if (product != null)
             {
                 User user = UserRepository.Get(u => u.UserName.Equals(User.Identity.Name)).SingleOrDefault();
@@ -53,10 +52,10 @@ namespace SumkaWeb.Controllers
                 {
                     ids.Add(item.Product.Id);
                 }
-                return Json(new { Url = Request.UrlReferrer.AbsoluteUri, id = ids.ToArray() });
+               // return Json(new { Url = Request.UrlReferrer.AbsoluteUri, id = ids.ToArray() });
             }
 
-            return Json(new { Url = Request.UrlReferrer.AbsoluteUri });
+            return Redirect(Request.UrlReferrer.AbsoluteUri.ToString());
         }
 
         private Order AddOrderToBascet(User user, Product product)

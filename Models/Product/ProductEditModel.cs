@@ -28,6 +28,10 @@ namespace TolokaStudio.Models
         [AllowHtml]
         public string HtmlDetail { get; set; }
 
+        [AllowHtml]
+        public string HtmlSmallBanner { get; set; }
+
+
         [Required(ErrorMessageResourceName = "Required_Price",
             ErrorMessageResourceType = typeof(ProductCreate))]
         [Display(Name = "Price", ResourceType = typeof(ProductCreate))]
@@ -41,7 +45,7 @@ namespace TolokaStudio.Models
         public int StoreID { get; set; }
 
 
-         [HiddenInput(DisplayValue = false)]
+        [HiddenInput(DisplayValue = false)]
         public int EmployeeId { get; set; }
     }
 }

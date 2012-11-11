@@ -70,5 +70,6 @@ namespace TolokaStudio.Common.Extensions
         url = url.Remove(0, HttpContext.Current.Request.ApplicationPath.Length);
       return url.TrimEnd('/').ToLowerInvariant();
     }
+
   }
 }

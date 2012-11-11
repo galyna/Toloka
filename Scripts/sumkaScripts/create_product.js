@@ -1,5 +1,36 @@
 ﻿
 var ProductCreator = {
+    uploadBigImg: function () {
+
+        $(".templateupload").dialog({
+            autoOpen: false,
+            height: 600,
+            width: 700,
+            modal: true,
+            title: "Завантажити зображення",
+            buttons: {
+                "Зберегти": function () {
+                    var image = top.frames["templatesrc"].document.getElementById('ImageUploaded');
+                    $(" .uploadbigImg").attr("src", $(image).attr("src"));
+
+                    $(this).dialog("close");
+
+                },
+                "Відміна": function () {
+                    $(this).dialog("close");
+                }
+            },
+            close: function () {
+
+            }
+        });
+
+        $("#addImg")
+            .click(function () {
+                $(".templateupload").dialog("open");
+            });
+    },
+
     addPublishing: function () {
         if ($(".publishBtn").length > 0) {
             var employee = {
@@ -64,6 +95,6 @@ var ProductCreator = {
 
         });
 
-      //  ProductCreator.addPublishing();
+       // ProductCreator.uploadBigImg();
     }
 };

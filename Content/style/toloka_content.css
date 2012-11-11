@@ -1,7 +1,7 @@
 @import "../../Content/style/style.css";
 @import "../../Content/style/customization_style.css";
 @import "../../Content/style/responsive.css";
-
+@import "../../Content/style/confirm.css";
 
 .template-hover { border:2px solid red;}
 .mceButton {display:inline; border:1px solid #F0F0EE; width:20px; height:20px; margin-right:1px}

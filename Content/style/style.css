@@ -3048,6 +3048,9 @@ Typ 5 Customers button*/
 /****************
     Box main item
 *****************/
+.box_thumb_item{
+    margin-top:10px;   
+}
 .box_main_item{
     background: #fff;
     position: relative;
