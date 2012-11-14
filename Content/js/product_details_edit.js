@@ -2,7 +2,7 @@
 var ProductDetailEdit = {
 
     uploadBigImg: function () {
-
+   /// fhfgjhfgh
         $(".templateupload").dialog({
             autoOpen: false,
             height: 600,
