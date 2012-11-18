@@ -330,6 +330,7 @@
     <Content Include="Scripts\slider\images\testImage8.png" />
     <Content Include="Scripts\slider\images\testImage9.png" />
     <Content Include="Scripts\slider\index.html" />
+    <Content Include="Scripts\slider\js\cloud-carousel.1.0.5.js" />
     <Content Include="Scripts\slider\js\jquery-1.6.1.min.js" />
     <Content Include="Scripts\slider\js\jquery.waterwheelCarousel.js" />
     <Content Include="Scripts\slider\js\jquery.waterwheelCarousel.min.js" />

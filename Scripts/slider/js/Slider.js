@@ -66,7 +66,7 @@ $(function () {
             };
 
             //#region init adnd create Sliders
-            self.init = function (slidersImgSources, domElement) {
+            self.init = function (domElement) {
                 /// <summary>Initialize start elements:
                 ///   <para>self.bodyPaper : slider container</para>
                 ///   <para>assigns 5 first source objects of type FrontSlider.prototype.sliderSourceItem</para>
@@ -76,10 +76,10 @@ $(function () {
                 /// <param name="slidersImgSources" type="object">collection of  FrontSlider.prototype.sliderSourceItem</param>
                 /// <param name="domElement" type="String">id of DOM element(<div/>) for self.bodyPaper as slider container</param>
                 self.bodyDomElementId = domElement;
-                self.bodyPaper = Raphael(domElement, self.bodyPaperWidth, self.bodyPaperHeight);
-                self.slidersImgSources = slidersImgSources;
-                var sources = self.getStartSources();
-                self.createSlide(sources);
+
+                self.slidersImgSources = $("#" +domElement+ " img");
+              // var sources = self.getStartSources();
+               // self.createSlide(sources);
                 self.initPrevNextButtons();
             },
             self.initPrevNextButtons = function () {
@@ -87,21 +87,21 @@ $(function () {
                 ///   <para>binds onclick event</para>
                 /// </summary>
 
-                var prevBtn = self.bodyPaper.image(self.prevButtonImg, self.itemDX * 2 - 30, self.itemDY * 2 + self.itemHeight - 10, 50, 30);
-                var nextBtn = self.bodyPaper.image(self.nextButtonImg, self.itemDX * 2 + self.itemWidth - 20, self.itemDY * 2 + self.itemHeight - 10, 50, 30);
+                var prevBtn = $("#"+  self.bodyDomElementId).append('<img src=' + self.prevButtonImg +'/>');
+//                var nextBtn = self.bodyPaper.image(self.nextButtonImg, self.itemDX * 2 + self.itemWidth - 20, self.itemDY * 2 + self.itemHeight - 10, 50, 30);
 
-                for (var y = 0; y < self.slidersImgs.length; y++) {
+//                for (var y = 0; y < self.slidersImgs.length; y++) {
 
-                    if (self.slidersImgs[y].sliderItem.isPrev) {
-                        prevBtn[0].elenment = self.slidersImgs[y];
-                        prevBtn[0].onclick = clickNextHandler;
-                    }
+//                    if (self.slidersImgs[y].sliderItem.isPrev) {
+//                        prevBtn[0].elenment = self.slidersImgs[y];
+//                        prevBtn[0].onclick = clickNextHandler;
+//                    }
 
-                    if (self.slidersImgs[y].sliderItem.isNext) {
-                        nextBtn[0].elenment = self.slidersImgs[y];
-                        nextBtn[0].onclick = clickPrevHandler;
-                    }
-                }
+//                    if (self.slidersImgs[y].sliderItem.isNext) {
+//                        nextBtn[0].elenment = self.slidersImgs[y];
+//                        nextBtn[0].onclick = clickPrevHandler;
+//                    }
+//                }
 
             },
             ///#region Slides creation
@@ -613,30 +613,10 @@ $(function () {
     }
 
     var slider = new FrontSlider();
-    var slidersImgSource = ["images/slider3.jpg", "images/slider1.jpg", "images/slider1.jpg", "images/slider3.jpg", "images/slider1.jpg"];
-    // var slidersImgSource = ["images/first.png", "images/second.png", "images/third.png", "images/four.png", "images/five.png", "images/first.png", "images/second.png", "images/third.png", "images/four.png", "images/five.png"];
-    var sliderSourceItems = [];
-
-    //fill source items
-    var sliderShops = [];
-    var shopApple = slider.prototype.initShop('Apple', "images/Apple.jpg", "http://www.apple.com/");
-    var shopAndroid = slider.prototype.initShop('Android', "images/Android.jpg", "http://www.android.com/");
-    var shopBlackberry = slider.prototype.initShop('Blackberry', "images/Blackberry.jpg", "http://us.blackberry.com/");
-    var shopWinPhone = slider.prototype.initShop('WinPhone', "images/WinPhone.jpg", "http://www.microsoft.com/windowsphone/uk-ua/default.aspx");
-    sliderShops.push(shopApple);
-    sliderShops.push(shopAndroid);
-    sliderShops.push(shopBlackberry);
-    sliderShops.push(shopWinPhone);
-
-    sliderSourceItems.push(slider.prototype.sliderSourceItem('Slider3 First', slidersImgSource[0], "Games", "Free", sliderShops));
-    sliderSourceItems.push(slider.prototype.sliderSourceItem('Slider1 Second', slidersImgSource[1], "Games", "Free", sliderShops));
-    sliderSourceItems.push(slider.prototype.sliderSourceItem('Slider1 Third', slidersImgSource[2], "Gagets", "Free", sliderShops));
-    sliderSourceItems.push(slider.prototype.sliderSourceItem('Slider3 Four', slidersImgSource[3], "Games", "Free", sliderShops));
-    sliderSourceItems.push(slider.prototype.sliderSourceItem('Slider3 Five', slidersImgSource[4], "Games", "Free", sliderShops));
-
+  
 
 
     ///initialize Slider
-    slider.prototype.init(sliderSourceItems, "sliderBody");
+    slider.prototype.init( "sliderbody");
 
 });

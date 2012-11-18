@@ -253,7 +253,9 @@
        * the items data object
        */
       function performCalculations($item, newPosition) {
-
+          if (newPosition==-3) {
+              newPosition=-2
+          }
         // Distance to the center
         var oldPosition = $item.data().currentPosition;
         var newDistanceFromCenter = Math.abs(newPosition);

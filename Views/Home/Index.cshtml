@@ -3,33 +3,34 @@
 @{
     ViewBag.Title = Home.LogoText;
 }
-<link rel="stylesheet" href="/Scripts/slider/css/waterwheel-carousel.css" charset="utf-8" />
-<script type="text/javascript" src="/Scripts/slider/js/jquery.waterwheelCarousel.min.js"></script>
+@*<link rel="stylesheet" href="/Scripts/slider/css/waterwheel-carousel.css" charset="utf-8" />*@
+<script type="text/javascript" src="/Scripts/slider/js/cloud-carousel.1.0.5.js"></script>
+
+
 <script src="/Content/js/category.js"></script>
 <div class="container">
-    <div class="row">
-       <div id="waterwheel-carousel-default">
-            <div class="carousel-controls">
-                <div class="carousel-prev">
-                    <a href="#">&lt; previous</a></div>
-                <div class="carousel-next">
-                    <a href="#">&gt; next</a></div>
-            </div>
-            <div class="carousel-images">
-                @if (Model.Stores != null)
+   
+       <div id = "carousel1" style="width:950px; height:328px;background:#fffff;overflow:hidden;padding-left:150px;">    
+            @if (Model.Stores != null)
+            {
+                foreach (var item in Model.Stores)
                 {
-                    foreach (var item in Model.Stores)
+                    if (item.ImagePath != null)
                     {
-                        if (item.ImagePath != null)
-                        {
-                    <img src="@item.ImagePath" alt="@item.Name" />           
-                        }
-
+                <img  class = "cloudcarousel" src="@item.ImagePath" alt="Flag 1 Description" title="Flag 1 Title"  />           
                     }
+
                 }
-            </div>
+            }
         </div>
-    </div>
+        <!-- Define left and right buttons. -->
+        <input id="left-but"  type="button" value="Left" />
+        <input id="right-but" type="button" value="Right" />
+        
+        <!-- Define elements to accept the alt and title text from the images. -->
+        <p id="title-text"></p>
+        <p id="alt-text"></p>
+   
     <div class="row">
         @if (Model.Stores != null)
         {
@@ -47,7 +48,7 @@
 <script type="text/javascript">
 //<![CDATA[
     $(document).ready(function () {
-        Category.init();
+         Category.init();
     });
 //]]>
 </script>

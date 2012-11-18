@@ -1,21 +1,25 @@
 ﻿
 var Category = {
 
-  
+
     init: function () {
 
-               $("#waterwheel-carousel-default").waterwheelCarousel({               
-     
-                   startingWaveSeparation: 0,
-                   centerOffset: 30,
-                   startingItemSeparation: 300,
-                   itemSeparationFactor: .7,
-                   itemDecreaseFactor: .75,
-                   opacityDecreaseFactor: 1,
-                   flankingItems:6
-                   
-               });
-        
+
+        // This initialises carousels on the container elements specified, in this case, carousel1.
+        $("#carousel1").CloudCarousel(
+		{
+		    xPos: 328,
+		    yPos: 32,
+		    buttonLeft: $("#left-but"),
+		    buttonRight: $("#right-but"),
+		    altBox: $("#alt-text"),
+		    titleBox: $("#title-text"),
+		    minScale: 0.5,
+		    xRadius: 370,
+            yRadius:20,
+            xPos:320
+         
+		});
     }
 
 
