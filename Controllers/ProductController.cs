@@ -376,24 +376,24 @@ namespace TolokaStudio.Controllers
             return PartialView("ImageUploadMediumBanner", new CombinedHTMLImageUpload());
         }
 
-
         [HttpPost, ActionName("ImageUploadMediumBanner")]
         public ActionResult ImageUploadMediumBanner(HttpPostedFileBase fileUpload)
         {
-            var fileUploaded = (fileUpload != null && fileUpload.ContentLength > 0) ? true : false;
-            var viewModel = new CombinedHTMLImageUpload();
 
+            var viewModel = new CombinedHTMLImageUpload();
+            var image = WebImage.GetImageFromRequest();
             try
             {
 
-                if (!fileUploaded)
+                if (image==null)
                 {
                     viewModel.Message = string.Format("Не вдалось завантажити зображення.");
                     Console.WriteLine(viewModel.Message);
                     return PartialView("ImageUploadMediumBanner", viewModel);
                 }
-
-                string fileName = BannerMediumImageSave();
+      
+                ImagesSaveHelper.FullImageSave(image);
+                string fileName = ImagesSaveHelper.BannerMediumImageSave(image);
 
                 viewModel.ImageUploaded = "<IMG id='ImageBannerUploaded' src=" + fileName + " style='float: left;'/>";
                 viewModel.Message = string.Format("Зображення {0} було успішно завантажено.{1}", fileName, Server.MapPath(fileName));
@@ -412,6 +412,7 @@ namespace TolokaStudio.Controllers
         {
             return PartialView("ImageUploadSmallBanner", new CombinedHTMLImageUpload());
         }
+
         [HttpPost, ActionName("ImageUploadSmallBanner")]
         public ActionResult ImageUploadSmallBanner(HttpPostedFileBase fileUpload)
         {
@@ -427,8 +428,9 @@ namespace TolokaStudio.Controllers
                     Console.WriteLine(viewModel.Message);
                     return PartialView("ImageUploadSmallBanner", viewModel);
                 }
-
-                string fileName = SaveThumb();
+                var image = WebImage.GetImageFromRequest();
+                ImagesSaveHelper.FullImageSave(image);
+                string fileName = ImagesSaveHelper.BannerSmallImageSave(image);
 
                 viewModel.ImageUploaded = "<IMG id='ImageUploadSmallBanner' src=" + fileName + " style='float: left;'/>";
                 viewModel.Message = string.Format("Зображення {0} було успішно завантажено.{1}", fileName, Server.MapPath(fileName));
@@ -441,92 +443,6 @@ namespace TolokaStudio.Controllers
             }
 
             return PartialView(viewModel);
-        }
-
-        private string BannerMediumImageSave()
-        {
-            var image = WebImage.GetImageFromRequest();
-
-            if (image != null)
-            {
-                if (image.Width > 310)
-                {
-                    image.Resize(310, ((310 * image.Height) / image.Width));
-                }
-
-                var filename = Path.GetFileName(image.FileName);
-                image.Save(Path.Combine("~/Content/img/Product/imgBigBanner", filename));
-                return Url.Content(Path.Combine("/Content/img/Product/imgBigBanner", filename));
-
-            }
-            return "";
-        }
-
-        private  string SaveThumb()
-        {
-            var imageSmall = WebImage.GetImageFromRequest();
-            var width = imageSmall.Width;
-            var height = imageSmall.Height;
-
-            if (width > height)
-            {
-                var leftRightCrop = (width - height) / 2;
-                imageSmall.Crop(0, leftRightCrop, 0, leftRightCrop);
-            }
-            else if (height > width)
-            {
-                var topBottomCrop = (height - width) / 2;
-                imageSmall.Crop(topBottomCrop, 0, topBottomCrop, 0);
-            }
-
-            if (imageSmall.Width > 80)
-            {
-                imageSmall.Resize(80, ((80 * imageSmall.Height) / imageSmall.Width));
-
-            }
-            var fileSmall = Path.GetFileName(imageSmall.FileName);
-            imageSmall.Save(Path.Combine("~/Content/img/Product/imgSmallBanner", fileSmall));
-
-            return Url.Content(Path.Combine("/Content/img/Product/imgSmallBanner", fileSmall));
-        }
-
-        private string SaveImage()
-        {
-            var image = WebImage.GetImageFromRequest();
-            if (image != null)
-            {
-                if (image.Width > 600)
-                {
-                    image.Resize(600, ((600 * image.Height) / image.Width));
-                }
-
-                var filename = Path.GetFileName(image.FileName);
-                image.Save(Path.Combine("~/Content/img/imgFull", filename));
-                var filepath = Path.Combine("~/Content/img/imgFull", filename);
-                var width = image.Width;
-                var height = image.Height;
-
-                if (width > height)
-                {
-                    var leftRightCrop = (width - height) / 2;
-                    image.Crop(0, leftRightCrop, 0, leftRightCrop);
-                }
-                else if (height > width)
-                {
-                    var topBottomCrop = (height - width) / 2;
-                    image.Crop(topBottomCrop, 0, topBottomCrop, 0);
-                }
-
-                if (image.Width > 130)
-                {
-                    image.Resize(130, ((130 * image.Height) / image.Width));
-
-                }
-                image.Save(Path.Combine("~/Content/img/imgThumbs", filename));
-                return Url.Content(filepath);
-
-            }
-            return "";
         }
 
         public ActionResult ImageUploadSmallDetail()
@@ -552,7 +468,10 @@ namespace TolokaStudio.Controllers
                 }
 
 
-                string fileName = SaveSmallImageDetail();
+                var image = WebImage.GetImageFromRequest();
+                ImagesSaveHelper.FullImageSave(image);
+                string fileName = ImagesSaveHelper.SmallDetailImageSave(image);
+
 
                 viewModel.ImageUploaded = "<IMG id='ImageUploadSmallDetail' src=" + fileName + " style='float: left;'/>";
                 viewModel.Message = string.Format("Зображення {0} було успішно завантажено.{1}", fileName, Server.MapPath(fileName));
@@ -587,7 +506,10 @@ namespace TolokaStudio.Controllers
                     return PartialView("ImageUploadBigDetail", viewModel);
                 }
 
-                string fileName = SaveImage();
+
+                var image = WebImage.GetImageFromRequest();
+                ImagesSaveHelper.FullImageSave(image);
+                string fileName = ImagesSaveHelper.BigDetailImageSave(image);
 
                 viewModel.ImageUploaded = "<IMG id='ImageUploadBigDetail' src=" + fileName + " style='float: left;'/>";
                 viewModel.Message = string.Format("Зображення {0} було успішно завантажено.{1}", fileName, Server.MapPath(fileName));
@@ -602,45 +524,6 @@ namespace TolokaStudio.Controllers
             return PartialView(viewModel);
         }
 
-        private string SaveSmallImageDetail()
-        {
-            var image = WebImage.GetImageFromRequest();
-            if (image != null)
-            {
-                if (image.Width > 600)
-                {
-                    image.Resize(600, ((600 * image.Height) / image.Width));
-                }
-
-                var filename = Path.GetFileName(image.FileName);
-                image.Save(Path.Combine("~/Content/img/imgFull", filename));
-                var width = image.Width;
-                var height = image.Height;
-
-                if (width > height)
-                {
-                    var leftRightCrop = (width - height) / 2;
-                    image.Crop(0, leftRightCrop, 0, leftRightCrop);
-                }
-                else if (height > width)
-                {
-                    var topBottomCrop = (height - width) / 2;
-                    image.Crop(topBottomCrop, 0, topBottomCrop, 0);
-                }
-
-                if (image.Width > 100)
-                {
-                    image.Resize(100, ((100 * image.Height) / image.Width));
-
-                }
-                image.Save(Path.Combine("~/Content/img/imgThumbs", filename));
-                filename = Path.Combine("~/Content/img/imgThumbs", filename);
-
-                return Url.Content(filename);
-
-            }
-            return "";
-        }
         #endregion
         #region private
         private Product EditModelToProduct(ProductEditModel productEditModel)

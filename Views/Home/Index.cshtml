@@ -3,13 +3,33 @@
 @{
     ViewBag.Title = Home.LogoText;
 }
-@*<a onclick="ShowPopup();" href=""><img title="Авторизація через vk.com" alt="вхід з контакту" src="../../Content/img/q/pinbar_favicon_vk.ico"/></a>
-<script type="text/javascript">
-    ShowPopup = function () {
-        window.open('https://oauth.vk.com/authorize?client_id=3204168&scope=notify&redirect_uri=http://tolokastudio.pp.ua/Account/VKAuthorization&response_type=code', "PopupWindow", 'width=400px,height=400px,top=150,left=250');
-    }
-</script> *@ 
+<link rel="stylesheet" href="/Scripts/slider/css/waterwheel-carousel.css" charset="utf-8" />
+<script type="text/javascript" src="/Scripts/slider/js/jquery.waterwheelCarousel.min.js"></script>
+<script src="/Content/js/category.js"></script>
 <div class="container">
+    <div class="row">
+       <div id="waterwheel-carousel-default">
+            <div class="carousel-controls">
+                <div class="carousel-prev">
+                    <a href="#">&lt; previous</a></div>
+                <div class="carousel-next">
+                    <a href="#">&gt; next</a></div>
+            </div>
+            <div class="carousel-images">
+                @if (Model.Stores != null)
+                {
+                    foreach (var item in Model.Stores)
+                    {
+                        if (item.ImagePath != null)
+                        {
+                    <img src="@item.ImagePath" alt="@item.Name" />           
+                        }
+
+                    }
+                }
+            </div>
+        </div>
+    </div>
     <div class="row">
         @if (Model.Stores != null)
         {
@@ -17,15 +37,17 @@
             {
                 if (item.HtmlBanner != null)
                 {
-                    @Html.Raw(System.Web.HttpUtility.HtmlDecode(item.HtmlBanner));
+            @Html.Raw(System.Web.HttpUtility.HtmlDecode(item.HtmlBanner));
                 }
 
             }
         }
     </div>
-    @*<iframe width="560" height="315" src="http://www.youtube.com/embed/ORGNS6ev9TE" frameborder="0" allowfullscreen></iframe>
-        <p>This is sample text to test galochku<img src="../../Content/img/q/button_ok_4699.png"  /></p>
-        <img src="../../Content/img/q/shopping_cart_1.gif" width="100" />
-         @Html.ActionLink("Test", "Test")*@
-
 </div>
+<script type="text/javascript">
+//<![CDATA[
+    $(document).ready(function () {
+        Category.init();
+    });
+//]]>
+</script>

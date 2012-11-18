@@ -12,7 +12,7 @@ var ProductCreator = {
                 "Зберегти": function () {
                     var image = top.frames["templateuploadbanner"].document.getElementById('ImageBannerUploaded');
                     $(".box_main_item_img img").attr("src", $(image).attr("src"));
-                    $("#ImageMediumPath").attr("src", $(image).attr("src"));
+                    $("#ImageMediumPath").val($(image).attr("src"));
                     $(this).dialog("close");
 
                 },
@@ -42,7 +42,7 @@ var ProductCreator = {
                 "Зберегти": function () {
                     var image = top.frames["templateuploadsmall"].document.getElementById('ImageUploadSmallBanner');
                     $(" .span3 a img").attr("src", $(image).attr("src"));
-                    $("#ImageSmallPath").attr("src", $(image).attr("src"));
+                    $("#ImageSmallPath").val($(image).attr("src"));
                   
                     $(this).dialog("close");
 

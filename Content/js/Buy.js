@@ -80,6 +80,19 @@ var Buyer = {
         $(".makeOrder").click(function () {
             Buyer.makeOrderBtn(this);
         });
+
+
+        $("#waterwheel-carousel-default").waterwheelCarousel({
+
+            startingWaveSeparation: 0,
+            centerOffset: 30,
+            startingItemSeparation: 100,
+            itemSeparationFactor: .7,
+            itemDecreaseFactor: .75,
+            opacityDecreaseFactor: 1,
+            flankingItems: 6
+
+        });
     }
 
 

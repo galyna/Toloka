@@ -299,7 +299,8 @@
         // Need to account for additional size separation only if the item is
         // on the right side or moving to the center from the right side
         if (newPosition > 0 || (newPosition === 0 && oldPosition === 1)) {
-          if (options.orientation === "horizontal") {
+            if (options.orientation === "horizontal") {
+             
             itemSeparation += widthDifference;
           } else {
             itemSeparation += heightDifference;

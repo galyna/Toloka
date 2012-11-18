@@ -13,9 +13,8 @@ Default Example
 *********************/
 #waterwheel-carousel-default {
   width:960px;
-  background-color:#CCC;
-  border:1px solid #222;
-  height:250px;
+
+  height:200px;
   font-family: Arial;
   font-size:14px;
   position:relative;
