@@ -4,9 +4,9 @@
 @{
     ViewBag.Title = Product.Edit_Product;
 }
-   <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />
-    <script src="http://code.jquery.com/jquery-1.8.2.js"></script>
-    <script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />
+<script src="http://code.jquery.com/jquery-1.8.2.js"></script>
+<script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
 <script src="@Url.Content("~/Scripts/sumkaScripts/create_product.js")" type="text/javascript"></script>
 @*<script src="@Url.Content("~/Scripts/tiny_mce_src.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/combinedHTML-tinymce.js")" type="text/javascript"></script>*@
@@ -28,22 +28,30 @@
                     @Html.LabelFor(model => model.Price)
                     @Html.EditorFor(model => model.Price, new { @class = "storecreatefield" })
                     @Html.ValidationMessageFor(model => model.Price, null, new { @class = "required" })
-                    @Html.HiddenFor(model => model.ImagePath)
-                     @if (!string.IsNullOrEmpty(Model.HtmlSmallBanner))
-            {
-                         <br />
-                          <br />
-                @Html.Raw(System.Web.HttpUtility.HtmlDecode(Model.HtmlSmallBanner))
-            }
+                    @Html.HiddenFor(model => model.ImageMediumPath)
+                    @Html.HiddenFor(model => model.ImageSmallPath)
+                    @if (!string.IsNullOrEmpty(Model.HtmlSmallBanner))
+                    {
+                        <br />
+                        <br />
+                        <div class="span3">
+                            @Html.Raw(System.Web.HttpUtility.HtmlDecode(Model.HtmlSmallBanner))
+                        </div>
+                    }
                 </div>
                 <div class="span10">
-                  <div class="templateupload">
-        <iframe id="templatesrc" name="templatesrc" src="/Product/BannerImageUpload" frameborder="0"
-            style="float: left; width: 700px; height: 400px"></iframe>
-    </div>
+                    <div class="templateuploadbanner">
+                        <iframe id="templateuploadbanner" name="templateuploadbanner" src="/Product/ImageUploadMediumBanner"
+                            frameborder="0" style="float: left; width: 700px; height: 400px;"></iframe>
+                    </div>
+                </div>
+                <div class="span10">
+                    <div class="templateuploadsmall">
+                        <iframe id="templateuploadsmall" name="templateuploadsmall" src="/Product/ImageUploadSmallBanner"
+                            frameborder="0" style="float: left; width: 700px; height: 400px;"></iframe>
+                    </div>
                 </div>
             </div>
-           
             <div class="row">
                 <div class="span24">
                     <input type="submit" value="@Home.Save" />
@@ -58,9 +66,9 @@
 <script type="text/javascript">
 //<![CDATA[
     $(document).ready(function () {
-        $('#templatesrc').load(function () {
+
             ProductCreator.init();
-        });
+      
 
     });
     

@@ -34,7 +34,7 @@ namespace SumkaWeb.Controllers
         }
 
 
-
+  
         public ActionResult Create(int Id)
         {
 
@@ -107,7 +107,7 @@ namespace SumkaWeb.Controllers
             public string Comments { get; set; }
             public string Email { get; set; }
         }
-        // GET: /Product/MakeOrder
+     
         [HttpPost]
         public ActionResult MakeOrder(OrderMakerModel model)
         {

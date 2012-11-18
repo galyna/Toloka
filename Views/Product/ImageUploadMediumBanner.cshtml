@@ -1,7 +1,7 @@
 ﻿@model TolokaStudio.Models.CombinedHTMLImageUpload
 
 <div style="float: left;">
-    @using (Html.BeginForm("ImageUploadSmall", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    @using (Html.BeginForm("ImageUploadMediumBanner", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
             @Html.Label(Model.SelectLabel)       
             <input type="file" id="fileUpload" name="fileUpload" style="width: 300px;" /><br />              
@@ -13,7 +13,7 @@
 <br />
 @Html.DisplayFor(model => model.Message)
 <br />
-<div class="span6 imageUploaded">
+<div class="span6">
    @Html.Raw(Model.ImageUploaded)
 </div>
 

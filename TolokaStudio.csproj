@@ -14,7 +14,7 @@
     <AssemblyName>TolokaStudio</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
-    <UseIISExpress>false</UseIISExpress>
+    <UseIISExpress>true</UseIISExpress>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -492,7 +492,7 @@
     <Content Include="Views\Order\OrderMaked.cshtml" />
     <Content Include="Views\Product\EditDetails.cshtml" />
     <Content Include="Views\Product\ImageUpload.cshtml" />
-    <Content Include="Views\Product\ImageUploadSmall.cshtml" />
+    <Content Include="Views\Product\ImageUploadSmallBanner.cshtml" />
     <Content Include="Views\Shared\VKAuthorization.cshtml" />
     <Content Include="Views\Product\web.config">
       <SubType>Designer</SubType>
@@ -505,6 +505,9 @@
     <Content Include="Views\Account\VKTest.cshtml" />
     <Content Include="Content\style\Test.cshtml" />
     <Content Include="Views\Product\BannerImageUpload.cshtml" />
+    <Content Include="Views\Product\ImageUploadSmallDetail.cshtml" />
+    <Content Include="Views\Product\ImageUploadMediumBanner.cshtml" />
+    <Content Include="Views\Product\ImageUploadBigDetail.cshtml" />
     <None Include="Views\Store\Index.cshtml" />
     <Content Include="Views\web.config" />
     <Content Include="Views\Bascet\Index.cshtml" />
@@ -566,12 +569,10 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>55799</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>
-          </IISUrl>
+          <IISUrl>http://localhost:27777/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl>
-          </CustomServerUrl>
+          <CustomServerUrl>http://localhost:37777/</CustomServerUrl>
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>

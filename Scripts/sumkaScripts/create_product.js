@@ -1,8 +1,8 @@
 ﻿
 var ProductCreator = {
-    uploadBigImg: function () {
+    uploadBannerImg: function () {
 
-        $(".templateupload").dialog({
+        $(".templateuploadbanner").dialog({
             autoOpen: false,
             height: 600,
             width: 700,
@@ -10,9 +10,40 @@ var ProductCreator = {
             title: "Завантажити зображення",
             buttons: {
                 "Зберегти": function () {
-                    var image = top.frames["templatesrc"].document.getElementById('ImageUploaded');
-                    $(" .uploadbigImg").attr("src", $(image).attr("src"));
+                    var image = top.frames["templateuploadbanner"].document.getElementById('ImageBannerUploaded');
+                    $(".box_main_item_img img").attr("src", $(image).attr("src"));
+                    $("#ImageMediumPath").attr("src", $(image).attr("src"));
+                    $(this).dialog("close");
 
+                },
+                "Відміна": function () {
+                    $(this).dialog("close");
+                }
+            },
+            close: function () {
+
+            }
+        });
+   
+        $(".addBannerImg").click(function () {
+
+            $(".templateuploadbanner").dialog("open");
+        });
+    },
+    uploadThumbImg: function () {
+
+        $(".templateuploadsmall").dialog({
+            autoOpen: false,
+            height: 600,
+            width: 700,
+            modal: true,
+            title: "Завантажити зображення",
+            buttons: {
+                "Зберегти": function () {
+                    var image = top.frames["templateuploadsmall"].document.getElementById('ImageUploadSmallBanner');
+                    $(" .span3 a img").attr("src", $(image).attr("src"));
+                    $("#ImageSmallPath").attr("src", $(image).attr("src"));
+                  
                     $(this).dialog("close");
 
                 },
@@ -25,12 +56,10 @@ var ProductCreator = {
             }
         });
 
-        $("#addImg")
-            .click(function () {
-                $(".templateupload").dialog("open");
+        $(".addSmallImg").click(function () {
+                $(".templateuploadsmall").dialog('open');          
             });
     },
-
     addPublishing: function () {
         if ($(".publishBtn").length > 0) {
             var employee = {
@@ -88,13 +117,7 @@ var ProductCreator = {
             $(".box_main_item_text span").html($(this).val());
         }); ;
 
-        //set src
-        $('#templatesrc').load(function () {
-            $(" .box_main_item_img img").attr("src", $(this.contentDocument).find('#ImageUploaded').attr("src"));
-            $("#ImagePath").val($(this.contentDocument).find('#ImageUploaded').attr("src"));
-
-        });
-
-       // ProductCreator.uploadBigImg();
+        ProductCreator.uploadBannerImg();
+        ProductCreator.uploadThumbImg();
     }
 };

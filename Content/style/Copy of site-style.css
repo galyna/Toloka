@@ -1,0 +1,133 @@
+﻿/* Grid */
+
+.grid.absolute {
+  position: relative;
+}
+
+.grid.absolute .cell {
+  position: absolute;
+  overflow: hidden;
+}
+
+.grid.block .cell {
+  float: left;
+  display: inline;
+}
+
+/* /Grid */
+
+/* Solution Item */
+
+.solution_item {
+  width: 310px;
+  height: 310px;
+  margin: 5px;
+  position: relative;
+  overflow: hidden;
+  -webkit-transition: all 0.2s linear;
+  -moz-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
+  -ms-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+
+.solution_item:hover {
+  width: 320px;
+  height: 320px;
+  margin: 0;
+}
+
+.solution_item .img {
+  background-repeat: no-repeat;
+  background-position: 100px 100px;
+  position: absolute;
+  z-index: 1;
+  height: 320px;
+  width: 310px;
+  opacity: 1;
+  left: 0;
+  -webkit-transition: all .5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+
+.solution_item:hover .img {
+  left: 220px;
+  opacity: 0;
+}
+
+.solution_item a {
+  text-decoration: none;
+}
+
+.solution_item a.link_wrap {
+  height: 310px;
+  width: 310px;
+  display: block;
+  text-decoration: none;
+  position: absolute;
+  z-index: 2;
+}
+
+.solution_item h3 {
+  font-size: 22px;
+  text-transform: uppercase;
+  position: relative;
+  padding-top: 36px;
+  padding-left: 22px;
+  line-height: 25px;
+  width: 250px;
+  -webkit-transition: all 0.2s linear;
+  -moz-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
+  -ms-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+
+.solution_item:hover h3 {
+  padding-top: 41px;
+  padding-left: 27px;
+}
+
+.solution_item .links {
+  position: absolute;
+  z-index: 10;
+  width: 250px;
+  top: 108px;
+  left: -300px;
+  -webkit-transition: all 0.3s linear;
+  -moz-transition: all 0.3s linear;
+  -o-transition: all 0.3s linear;
+  -ms-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+}
+
+.solution_item .links ul li {
+  display: block;
+  padding: 13px 0 11px 23px;
+}
+
+.solution_item .links ul li:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.solution_item .links ul li a {
+  font-size: 16px;
+  color: #fff;
+  border-left: 3px solid rgba(255, 255, 255, 0.5);
+  padding-left: 16px;
+  display: block;
+}
+
+.solution_item:hover .links {
+  top: 108px;
+  left: 0;
+}
+
+.solution_item:hover .links ul li {
+  padding: 13px 22px 9px 28px;
+}
+
+/* /Solution Item */

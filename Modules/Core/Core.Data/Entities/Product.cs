@@ -18,6 +18,9 @@ namespace Core.Data.Entities
         public virtual string HtmlSmallBanner { get; set; }
         public virtual string HtmlDetail { get; set; }
         public virtual string ImagePath { get; set; }
+        public virtual string ImageBigPath { get; set; }
+        public virtual string ImageMediumPath { get; set; }
+        public virtual string ImageSmallPath { get; set; }
         public Product()
         {
             HtmlDetail = "";

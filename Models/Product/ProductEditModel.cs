@@ -37,9 +37,10 @@ namespace TolokaStudio.Models
         [Display(Name = "Price", ResourceType = typeof(ProductCreate))]
         public double Price { get; set; }
 
-        [Required(ErrorMessageResourceName = "Required_Image",
-        ErrorMessageResourceType = typeof(Home))]
-        public virtual string ImagePath { get; set; }
+
+        public virtual string ImageMediumPath { get; set; }
+
+        public virtual string ImageSmallPath { get; set; }
 
         [HiddenInput(DisplayValue = false)]
         public int StoreID { get; set; }

@@ -3,11 +3,11 @@ var Buyer = {
 
     buy: function (obj) {
         var order = {
-            ProductId: obj.alt
+            Id: obj.alt
         };
 
         $.ajax({
-            type: "post",
+            type: "GET",
             url: "/Order/Create",
             data: order,
             dataType: "json",
